@@ -43,14 +43,7 @@ tereesa =Character("Tereesa",
                    "bachelorette"
                    ,"mascot"
                    ,tereesa_exes)
-donald_exes = ["list","here"]
-donald_likes= ["list","here"]
-donald = Character(
-            "Donald",
-            donald_likes,
-            "Eugene",
-        "bachelor",
-            "mascot",donald_exes)
+
 brutus_exes = ["list","here", "Animal the  muppet"]
 brutus_likes= ["list","here"]
 brutus = Character("Brutus",
@@ -67,8 +60,8 @@ otto = Character("Otto",
                   "bachelorx",
                   "mascot",
                  otto_exes)
-keggy_exes = ["list","here", "Animal the  muppet"]
-keggy_likes= ["list","here"]
+keggy_exes = ["list","here"]
+keggy_likes= ["list","here","stickers"]
 keggy = Character("Keggy",
                   keggy_likes,
                   "Hanover",

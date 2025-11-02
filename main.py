@@ -1,7 +1,7 @@
 import time
 import os
 from characters import Character as ch
-
+from locations import union,walk_through_greenspace1, down_riv
 # Lists of pronouns
 pronouns_female = ["she", "her", "hers"]
 pronouns_male = ["he", "him", "his"]
@@ -10,6 +10,13 @@ pronouns_nonbinary = ["they", "them", "theirs"]
 def greet():
     print("Welcome to Mascot Dating Simulator!")
     user_name = input("What is your name? ")
+    #this is dev stuff. If 1 is entered, the dev should be able to get to any part of the game. theoretically.
+    """
+    if user_name == '1'  :      
+        print(locations)        
+        
+    """
+
     print("Hello, " + user_name + "!")
     user_input_gender = input("What is your gender? ").strip().lower()
 
@@ -34,6 +41,7 @@ def greet():
 
     return user_name,user_input_gender, user_input_gender_save, user_gender, user_age
 
+
 def save(user_name, user_input_gender,user_input_gender_save, user_gender, user_age):
     relative_directory = "Saves"
     os.makedirs(relative_directory, exist_ok=True)
@@ -51,10 +59,42 @@ def save(user_name, user_input_gender,user_input_gender_save, user_gender, user_
 def meet_the_bas(self):
     #this should be the introduction function for whenever the
     #user needs a refresh on who someone is.
+    #or if there's a way to use it in the
+    # story, that's where it will be used
     pass
 
 
 
+def intro():
+    print("It's a wonderful, sunny day and you have decided to take a walk around campus before going to the library to study.\n"
+          "The 1 bus is strangely full...\n"
+          "You get off the bus at Abbot and GR...")
+    while True:
+        choice1 =input("Do you want to go to the Union?\n Type 'yes' or 'no'.").lower()
+        if choice1 == "yes":
+            union()
+            break
+        elif choice1 == "no":
+            print("What would you like to do?"
+                  "\n1. Go through the greenspace."
+                  "\n2. Go down Grand River.")
+            choice2 = input("\nType 1 or 2.")
+            if choice2 == "1":
+                walk_through_greenspace1()
+                break
+            elif choice2 == "2":
+                down_riv()
+                break
+            else:
+                print("What? Sorry, I didn't get that.")
+        else:
+            print("What? Sorry, I didn't get that.")
+
+
+
+
+    """print("Once you cross the Red Cedar, you begin to notice a lot of people walking around!"
+          "There must be an event at the {location.breslin}! ")"""
 
 #--------start the game
 
@@ -67,5 +107,5 @@ a student at MSU. You need to run errands near breslin or whatever
 convention center it is at and you run into all of these mascots
 looking for love <3.
 """
-
+intro()
 
