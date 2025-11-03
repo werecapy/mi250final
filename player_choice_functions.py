@@ -1,4 +1,7 @@
 import random
+
+from locations import union
+
 global paper_topic
 #list of paper topics to choose from
 paper_topic_list = ['sleep disorders',
@@ -69,3 +72,34 @@ def player_sparty_ch_1():
         print("Somehow, he gets closer to you and add more here")
     else:
         print("Sorry, I don't understand that.")
+
+def river_restauraunt():
+    restaurant_choice = input("What are you going to choose?\n"
+                              "1. Kimchi Box\n"
+                              "2. Playa Bowl\n"
+                              "3. Raisin' Canes\n"
+                              "4. Five Guys\n"
+                              "5. Handie's\n"
+                              "6. Walk back the the Union, a combo sounds like a much better idea./n"
+                              )
+    if restaurant_choice == "1" or restaurant_choice == "one":
+        pass
+    if restaurant_choice == "2" or restaurant_choice == "two":
+        pass
+    if restaurant_choice == "3" or restaurant_choice == "three":
+        pass
+    if restaurant_choice == "4" or restaurant_choice == "four":
+        pass
+    if restaurant_choice == "5" or restaurant_choice == "five":
+        pass
+    if restaurant_choice == "6" or restaurant_choice == "six":
+        print("The walk back to the Union is pleasant.")
+        union()
+
+
+
+
+def eat_riv():
+    eat_river= input("Are you in the mood to eat?")
+    if eat_river == "yes" or eat_river == "y":
+        print("You think about the wonderful restaurants along Grand River.\n")

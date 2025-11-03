@@ -1,7 +1,9 @@
 from player_info import backpack
 import random
 import time
-from player_choice_functions import paper_topic_choice, player_combo, player_sparty_ch_1
+from player_choice_functions import paper_topic_choice, player_combo, player_sparty_ch_1, eat_riv
+
+
 #list of locations for saves
 
 
@@ -47,4 +49,4 @@ def walk_through_greenspace1():
 def down_riv():
     print("There are a TON of cars, even though it's usually not this busy!\n"
           "Even the sign trucks are slowly crawling amongst the crowd of vehicles.\n")
-    input("Are you in the mood to eat?")
+    eat_riv()
