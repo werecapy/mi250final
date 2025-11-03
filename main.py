@@ -70,15 +70,15 @@ def intro():
           "The 1 bus is strangely full...\n"
           "You get off the bus at Abbot and GR...")
     while True:
-        choice1 =input("Do you want to go to the Union?\n Type 'yes' or 'no'.").lower()
-        if choice1 == "yes":
+        choice1 =input("Do you want to go to the Union?\n Type 'yes' or 'no'.\n").lower()
+        if choice1 == "yes" or "y":
             union()
             break
-        elif choice1 == "no":
+        elif choice1 == "no" or "n":
             print("What would you like to do?"
                   "\n1. Go through the greenspace."
                   "\n2. Go down Grand River.")
-            choice2 = input("\nType 1 or 2.")
+            choice2 = input("\nType 1 or 2.\n")
             if choice2 == "1":
                 walk_through_greenspace1()
                 break
