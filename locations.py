@@ -23,10 +23,13 @@ def union():
 def walk_through_greenspace1():
     print("Wow, it *really* is a great day! There's a perfect amount of cloud cover"
           "and a light enough breeze to not feel too chilly. Squirrels are bounding about,"
-          "living their best furry lives. You get jealous of them because you think about\n"
-          f"the 10 page paper you have to complete before next week about... what was it again?\n")
+          "living their best furry lives. You get jealous of them because you think about"
+          "the 10 page paper you have to complete before next week about... what was it again?\n")
     paper_topic_choice()
     input("Press enter to continue...")
+    library()
+
+def library():
     print("Walking through the green space, you finally get to the front of the library."
           "An interesting flyer catches your attention on the way to your usual study spot.\n")
     #This is where the turtle function that shows the poster goes.

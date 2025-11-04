@@ -1,3 +1,4 @@
+from main import user_name, user_input_gender_save, user_age, user_gender
 
 player_dict = {
 
