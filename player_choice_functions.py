@@ -73,7 +73,7 @@ def player_sparty_ch_1():
     else:
         print("Sorry, I don't understand that.")
 
-def river_restauraunt():
+def river_restaurant():
     restaurant_choice = input("What are you going to choose?\n"
                               "1. Kimchi Box\n"
                               "2. Playa Bowl\n"
@@ -103,3 +103,4 @@ def eat_riv():
     eat_river= input("Are you in the mood to eat?")
     if eat_river == "yes" or eat_river == "y":
         print("You think about the wonderful restaurants along Grand River.\n")
+    river_restaurant()
