@@ -1,7 +1,8 @@
 from player_info import backpack
 import random
 import time
-from player_choice_functions import paper_topic_choice, player_combo, player_sparty_ch_1, eat_riv
+from main import meet_the_bas
+from player_choice_functions import *
 
 
 #list of locations for saves
@@ -53,3 +54,22 @@ def down_riv():
     print("There are a TON of cars, even though it's usually not this busy!\n"
           "Even the sign trucks are slowly crawling amongst the crowd of vehicles.\n")
     eat_riv()
+
+
+def breslin(minutes):
+    minutes.randint(100)
+    print("There's so many people here!\n"
+          f"It takes about {minutes} minutes to get in.\n"
+          "Inside, there's more people that you could have imagined.\n"
+          "But it's not just people...")
+    time.sleep(5)
+    print("There are plenty of mascots, as to be expected."
+          "Walking around, you see a giant orange ball. It comes up to you and introduces itself."
+          )
+    print("'Hi, I'm Otto! Have you been to any of the events yet?'")
+    breslinch1()
+
+
+
+
+

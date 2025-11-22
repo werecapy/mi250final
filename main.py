@@ -1,11 +1,25 @@
 import time
 import os
+import sys
 from characters import Character as ch
-from locations import union,walk_through_greenspace1, down_riv
+from locations import union, walk_through_greenspace1, library, down_riv, breslin
+
 # Lists of pronouns
 pronouns_female = ["she", "her", "hers"]
 pronouns_male = ["he", "him", "his"]
 pronouns_nonbinary = ["they", "them", "theirs"]
+
+def quit_program(prompt):
+    answer = input(prompt).lower()
+
+    if answer == "quit":
+        if input("Are you sure? (yes/no) ").lower() == "yes":
+            print("\nGoodbye!")
+            exit()
+        else:
+            return quit_program(prompt)
+
+    return answer
 
 def greet():
     print("Welcome to Mascot Dating Simulator!")
@@ -56,12 +70,14 @@ def save(user_name, user_input_gender,user_input_gender_save, user_gender, user_
 
     print(f"User inputs saved to {full_path}!")
 
-def meet_the_bas(self):
+def meet_the_bas(character,):
     #this should be the introduction function for whenever the
     #user needs a refresh on who someone is.
+
     #or if there's a way to use it in the
     # story, that's where it will be used
-    pass
+    print("Hi! I'm {ch.name}. I'm from {ch.location} and I work at {ch.job}.")
+
 
 
 
@@ -70,19 +86,19 @@ def intro():
           "The 1 bus is strangely full...\n"
           "You get off the bus at Abbot and GR...")
     while True:
-        choice1 =input("Do you want to go to the Union?\n Type 'yes' or 'no'.\n").lower()
-        if choice1 == "yes" or "y":
+        choice =input("Do you want to go to the Union?\n Type 'yes' or 'no'.\n").lower()
+        if choice == "yes" or "y":
             union()
             break
-        elif choice1 == "no" or "n":
+        elif choice == "no" or "n":
             print("What would you like to do?"
                   "\n1. Go through the greenspace."
                   "\n2. Go down Grand River.")
-            choice2 = input("\nType 1 or 2.\n")
-            if choice2 == "1":
+            choice = input("\nType 1 or 2.\n")
+            if choice == "1":
                 walk_through_greenspace1()
                 break
-            elif choice2 == "2":
+            elif choice == "2":
                 down_riv()
                 break
             else:
@@ -107,5 +123,7 @@ a student at MSU. You need to run errands near breslin or whatever
 convention center it is at and you run into all of these mascots
 looking for love <3.
 """
+quit_program(quit)
 intro()
+
 

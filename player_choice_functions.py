@@ -14,7 +14,7 @@ paper_topic_list = ['sleep disorders',
 #this is the paper topic chooser function
 def paper_topic_choice():
     global paper_topic_list
-
+    global paper_topic
     if random.random() < 0.5:
 
         new_topic = input("What is your paper on?")
@@ -28,59 +28,66 @@ def paper_topic_choice():
 #this is the first combo
 def player_combo():
     combo_options = {
-        "1":"A Woody's burrito, energy drink, and a bag of chips",'one':"A Woody's burrito, energy drink, and a bag of chips",
-        '2': 'An instant ramen, a juice, and a cup of fruit', 'two':'An instant ramen, a juice, and a cup of fruit',
-        '3': 'A protein drink, a bottle of water, and a small bag of trail mix','three':'A protein drink, a bottle of water, and a small bag of trail mix',
-        '4': "Maybe you're not hungry after all.",'four': "Maybe you're not hungry after all."
+        "1": "A Woody's burrito, energy drink, and a bag of chips",
+        'one': "A Woody's burrito, energy drink, and a bag of chips",
+        '2': 'An instant ramen, a juice, and a cup of fruit',
+        'two': 'An instant ramen, a juice, and a cup of fruit',
+        '3': 'A protein drink, a bottle of water, and a small bag of trail mix',
+        'three': 'A protein drink, a bottle of water, and a small bag of trail mix',
+        '4': "Maybe you're not hungry after all.",
+        'four': "Maybe you're not hungry after all."
     }
-    combo_choice = input("Would you like to get combo?\n "
-                         "Type yes or no:\n ")
-    if combo_choice == "yes" or combo_choice == "y":
+
+    choice = input("Would you like to get combo?\nType yes or no:\n").lower()
+
+    if choice in ("yes", "y"):
         print("Everything looks too good!\n")
+
         for attempt in range(3):
-            combo_combo = input("What are you in the mood for?\n"
-                            "     1. A Woody's burrito, energy drink, and a bag of chips\n"
-                            "     2. An instant ramen, a juice, and a cup of fruit\n"
-                            "     3. A protein drink, a bottle of water, and a small bag of trail mix\n"
-                            "     4. Maybe you're not hungry after all.")
+            choice_combo = input(
+                "What are you in the mood for?\n"
+                "  1. A Woody's burrito, energy drink, and a bag of chips\n"
+                "  2. An instant ramen, a juice, and a cup of fruit\n"
+                "  3. A protein drink, a bottle of water, and a small bag of trail mix\n"
+                "  4. Maybe you're not hungry after all.\n> "
+            ).lower()
 
-            if combo_options == "4" or combo_combo == "four":
+            if choice_combo in ("4", "four"):
                 print("Ultimately, you decide to pass on a delicious combo.")
-            else:
-                combo = combo_options[combo_combo]
-                # add object(s) to the backpack
-                print(f"You gather your items: ({combo}), and bring them up to the cashier.\n"
-                      "They were super nice and it was a quick transaction.\n"
-                      "Onward! (Press enter to continue)")
-                combo.split(",")
-                backpack.append(combo) # make sure the combo variable is split into 3 separate items when put into the backpack
+                return
 
-        else:
-            print("Sorry, I don't understand that. Try again.")
+            if choice_combo in combo_options:
+                combo = combo_options[choice_combo]
+                print(f"You gather your items: ({combo}), and bring them up to the cashier.\n"
+                      "They were super nice and it was a quick transaction.\n")
+                return
+            else:
+                print("Sorry, I don't understand that. Try again.")
     else:
         print("Ultimately, you decide to pass on a delicious combo.")
 
 
 
+
 def player_sparty_ch_1():
-    sparty_ch_1=input("What do you say?\n "
+    choice=input("What do you say?\n "
                       f"    1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'"
                       "     2. 'You know, I should be working on my paper, but this seems a lot more exciting!'\n"
                       "     3. You don't say anything, freezing, instead. \n").strip().lower()
-    if sparty_ch_1 == "1" or sparty_ch_1 == "one":
+    if choice == "1" or choice == "one":
         print('He stomps and puts his hands on his hips, saying, "--"\n')
-        sparty_ch2 = input("What do you say?\n "
+        choice = input("What do you say?\n "
                            "    1. 'I know, I know, but it's 20% of my grade! If I don't do it, I'm screwed!'\n"
                            "    2. 'Maybe I can take a break for today.'\n"
                            "    3. 'C'mon Sparty, you know I would go if I could!'\n").strip().lower()
 
-    if sparty_ch_1 == "2" or sparty_ch_1 == "two":
+    if choice == "2" or choice == "two":
         print('He gives you an aggressive thumbs up and says, "--"')
-        sparty_ch3 = input("What do you say?\n "
+        choice = input("What do you say?\n "
                            "    1. 'I know, I'll get my paper on {paper_topic} done later.'\n"
                            "    2. 'Of course I would go to the convention for you, Sparty!'\n"
                            "    3. ''").strip().lower()
-    if sparty_ch_1 == "3" or sparty_ch_1 == "three":
+    if choice == "3" or choice == "three":
         print("Somehow, he gets closer to you and add more here")
     else:
         print("Sorry, I don't understand that.")
@@ -141,10 +148,58 @@ def river_restaurant():
 
         
         
-        
+def mascot_cafe():
+    pass
+def eating_contest():
+    pass
+def artist_alley():
+    pass
+def mascot_panels():
+    pass
+def meet_n_greets():
+    pass
+
 
 def eat_riv():
-    eat_river= input("Are you in the mood to eat?")
-    if eat_river == "yes" or eat_river == "y":
+    choice= input("Are you in the mood to eat? Type 'yes' or 'no'\n")
+    if choice == "yes" or choice == "y":
         print("You think about the wonderful restaurants along Grand River.\n")
     river_restaurant()
+
+def breslinch1(paper_topic):
+    choice = input("What do you say?\n"
+                        "   1. 'You know what? I've seen enough, I really need to "
+                        "head back to the library.'\n"
+                        "   2. 'I've seen some things, but not everything."
+                        "What are some of the events happening?'\n"
+                        "   3. 'What do you think I should do?'")
+    if choice == "1":
+        print("Awwwww, c'mon! The mascot convention only happens once a year!")
+        choice = input("What do you say?\n"
+                       "    1. 'Well, now that I'm here, I can see mascots really aren't my thing. Sorry Otto.'\n"
+                       f"    2. 'Otto, I really have to go work on my paper. It's about {paper_topic}, a really difficult topic'\n"
+                       "    3. \n"
+                       "    1.\n")
+    elif choice == "2":
+            print("Well, there's the mascot café, eating contest, artist alley, mascot panels, meet & greets,"
+                  "")
+            choice = input("Which do you choose?\n"
+                           "    1. The mascot café\n"
+                           "    2. The eating contest\n"
+                           "    3. The artist alley\n"
+                           "    4. The mascot panels\n "
+                           "    5. The meet & greets\n")
+            if choice == "1":
+                 mascot_cafe()
+            elif choice == "2":
+                eating_contest()
+            elif choice == "3":
+                artist_alley()
+            elif choice == "4":
+                mascot_panels()
+            elif choice == "5":
+                meet_n_greets()
+
+    elif choice == "3":
+        pass
+
