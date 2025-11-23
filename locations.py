@@ -23,7 +23,7 @@ def union():
     """Union location - buy combos"""
     print("The union is as busy as ever!\n"
           "Every table has at least one student sitting at it. "
-          "Passing through Sparty's, you think about getting a combo.\n")
+          "\n")
 
     if not game_state["combo_purchase"]:
         print("Passing through the Sparty's, you think about getting a combo.\n")

@@ -60,7 +60,7 @@ def player_combo():
 
             if choice_combo in combo_options:
                 combo_text, combo_id = combo_options[choice_combo]
-                print(f"You gather your items: {combo}, and bring them up to the cashier.\n"
+                print(f"You gather your items, and bring them up to the cashier.\n"
                       "They were super nice and it was a quick transaction.\n")
                 if combo_id:
                     purchase_combo(combo_id)
