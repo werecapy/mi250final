@@ -12,17 +12,16 @@ from player_choice_functions import (
 )
 
 def union():
+    global combo_type
     print("The union is as busy as ever!\n"
           "Every table has at least one student sitting at it. "
           "Passing through Sparty's, you think about getting a combo.\n")
     if game_state["combo_purchase"]:
         combo_type = game_state["combo_type"]
-        if combo_type == "woody_combo":
+        #this should all pass because it is only get
+        if combo_type is not None:
             pass
-        elif combo_type == "ramen combo":
-            pass
-        elif combo_type == "protein_combo":
-            pass
+
     else:
         print("Passing through the Sparty's, you think about getting a combo.\n")
         player_combo()
@@ -33,7 +32,12 @@ def union():
     if choice == "1":
         walk_through_greenspace1()
     if choice == "2":
-
+        if combo_type == "woody_combo":
+            pass
+        elif combo_type == "ramen combo":
+            pass
+        elif combo_type == "protein_combo":
+            pass
 
 
 

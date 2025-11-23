@@ -61,21 +61,33 @@ def player_combo():
         print("Ultimately, you decide to pass on a delicious combo.")
 
 
+
+
 def player_sparty_ch_1():
     paper_topic = game_state["paper_topic"]
-    choice = input(f"What do you say?\n"
-                   f"  1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'\n"
-                   f"  2. 'You know, I should be working on my paper, but this seems exciting!'\n"
-                   f"  3. You don't say anything, freezing instead.\n> ").strip().lower()
-
-    if choice in ("1", "one"):
+    choice=input("What do you say?\n "
+                      f"    1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'"
+                      "     2. 'You know, I should be working on my paper, but this seems a lot more exciting!'\n"
+                      "     3. You don't say anything, freezing, instead. \n").strip().lower()
+    if choice == "1" or choice == "one":
         print('He stomps and puts his hands on his hips, saying, "--"\n')
-    elif choice in ("2", "two"):
+        choice = input("What do you say?\n "
+                           "    1. 'I know, I know, but it's 20% of my grade! If I don't do it, I'm screwed!'\n"
+                           "    2. 'Maybe I can take a break for today.'\n"
+                           "    3. 'C'mon Sparty, you know I would go if I could!'\n").strip().lower()
+
+    if choice == "2" or choice == "two":
+
         print('He gives you an aggressive thumbs up and says, "--"')
-    elif choice in ("3", "three"):
-        print("Somehow, he gets closer to you and...")
+        choice = input("What do you say?\n "
+                           "    1. 'I know, I'll get my paper on {paper_topic} done later.'\n"
+                           "    2. 'Of course I would go to the convention for you, Sparty!'\n"
+                           "    3. ''").strip().lower()
+    if choice == "3" or choice == "three":
+        print("Somehow, he gets closer to you and add more here")
     else:
         print("Sorry, I don't understand that.")
+
 
 
 def river_restaurant():
@@ -123,17 +135,51 @@ def eat_riv():
         print("You think about the wonderful restaurants along Grand River.\n")
         river_restaurant()
 
+def mascot_cafe():
+    pass
+def eating_contest():
+    pass
+def artist_alley():
+    pass
+def mascot_panels():
+    pass
+def meet_n_greets():
+    pass
 
-def breslinch1():
-    paper_topic = game_state["paper_topic"]
+def breslinch1(paper_topic):
     choice = input("What do you say?\n"
-                   "  1. 'I really need to head back to the library.'\n"
-                   "  2. 'What events are happening?'\n"
-                   "  3. 'What do you think I should do?'\n> ").strip().lower()
-
-    if choice in ("1", "one"):
+                        "   1. 'You know what? I've seen enough, I really need to "
+                        "head back to the library.'\n"
+                        "   2. 'I've seen some things, but not everything."
+                        "What are some of the events happening?'\n"
+                        "   3. 'What do you think I should do?'")
+    if choice == "1":
         print("Awwwww, c'mon! The mascot convention only happens once a year!")
-    elif choice in ("2", "two"):
-        print("Well, there's the mascot café, eating contest, artist alley, mascot panels, meet & greets...")
-    elif choice in ("3", "three"):
-        print("Otto waits for a response...")
+        choice = input("What do you say?\n"
+                       "    1. 'Well, now that I'm here, I can see mascots really aren't my thing. Sorry Otto.'\n"
+                       f"    2. 'Otto, I really have to go work on my paper. It's about {paper_topic}, a really difficult topic'\n"
+                       "    3. \n"
+                       "    1.\n")
+    elif choice == "2":
+            print("Well, there's the mascot café, eating contest, artist alley, mascot panels, meet & greets,"
+                  "")
+            choice = input("Which do you choose?\n"
+                           "    1. The mascot café\n"
+                           "    2. The eating contest\n"
+                           "    3. The artist alley\n"
+                           "    4. The mascot panels\n "
+                           "    5. The meet & greets\n")
+            if choice == "1":
+                 mascot_cafe()
+            elif choice == "2":
+                eating_contest()
+            elif choice == "3":
+                artist_alley()
+            elif choice == "4":
+                mascot_panels()
+            elif choice == "5":
+                meet_n_greets()
+
+    elif choice == "3":
+        pass
+
