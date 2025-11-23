@@ -1,0 +1,13 @@
+# ============ IMPORT HIERARCHY (follow this order) ============
+
+# game_state.py (NO IMPORTS - base level)
+#     ↑
+# dialogue.py (imports only standard library)
+#     ↑
+# dialogues.py (imports dialogue.py, game_state.py)
+#     ↑
+# player_choice_functions.py (imports game_state, dialogues)
+#     ↑
+# locations.py (imports game_state, player_choice_functions)
+#     ↑
+# main.py (imports everything else)

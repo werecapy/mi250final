@@ -33,6 +33,12 @@ class dialouge_node:
 
         print("Sorry, I don't understand that.\n")
         self.display()
+#======= functions for dialogue=======
+
+
+
+
+
 
 #========== My dialogue=======
 union_dialouge = dialouge_node(
