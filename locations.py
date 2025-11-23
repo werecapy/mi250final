@@ -53,6 +53,7 @@ def walk_through_greenspace1():
     library()
 
 def library():
+    game_state["meet_sparty"] = True
     print("Walking through the green space, you finally get to the front of the library. "
           "An interesting flyer catches your attention on the way to your usual study spot.\n")
     input("Press enter to continue...")
@@ -65,12 +66,43 @@ def library():
           "Oh! He's asking if you're going to the convention.")
     player_sparty_ch_1()
 
+
 def down_riv():
+    """Down the river location - checks if meal was purchased"""
     print("There are a TON of cars, even though it's usually not this busy!\n"
           "Even the sign trucks are slowly crawling amongst the crowd of vehicles.\n")
-    eat_riv()
+
+    # Check if player already bought a meal
+    if game_state["meal_purchased"]:
+        meal_name = game_state["meal_name"]
+        meal_type = game_state["meal_type"]
+
+        if meal_type == "kimchi_box":
+            print(f"You're carrying your {meal_name}.\n"
+                  )
+
+        elif meal_type == "playa_bowl":
+            print(f"You're carrying your {meal_name}.\n"
+                  )
+
+        elif meal_type == "raisin_canes":
+            print(f"You're carrying your {meal_name}.\n"
+                  )
+
+        elif meal_type == "five_guys":
+            print(f"You're carrying your {meal_name}.\n"
+                  )
+
+        elif meal_type == "dwc":
+            print(f"You're carrying your {meal_name}.\n"
+                  )
+
+    else:
+        # Player hasn't bought a meal, offer the option
+        eat_riv()
 
 def breslin():
+    game_state["meet_otto"] = True
     minutes = random.randint(5, 15)
     print("There's so many people here!\n"
           f"It takes about {minutes} minutes to get in.\n"

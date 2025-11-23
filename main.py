@@ -1,6 +1,22 @@
+# ============ main.py (UPDATED) ============
+"""
+Add this to the TOP of your main.py, before anything else
+"""
+
+from validation import run_all_validations, print_validation_results
+
+# Run silent validation first
+print("Initializing game...", end=" ", flush=True)
+validation_errors = run_all_validations(verbose=False)
+
+if not print_validation_results(validation_errors):
+    exit(1)
+
+# Only continue if validation passed
 # main.py CAN import from other modules
 import time
 import os
+
 from locations import union, walk_through_greenspace1, down_riv
 from game_state import set_player_data, set_paper_topic, game_state
 
