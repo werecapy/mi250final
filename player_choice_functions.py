@@ -6,10 +6,20 @@ from game_state import game_state, purchase_combo, purchase_meal
 
 paper_topic_list = ['sleep disorders', 'nuclear power',
                     "social media interaction", 'book bans']
+print(paper_topic_list)
+def get_choice(options):
+    print("Which do you choose?")
+    for i, option in enumerate(options, 1):
+        print(f"    {i}. {option}")
+    choice = input(f"Enter your choice (1-{len(options)}): ")
+
+    if choice.isdigit() and 1 <= int(choice) <= len(options):
+        return int(choice)
+    print(f"Please enter a number between 1 and {len(options)}")
 
 def paper_topic_choice():
     if random.random() < 0.5:
-        new_topic = input("What is your paper on? ")
+        new_topic = input("What is your paper on?\n>")
         paper_topic_list.append(new_topic)
         game_state["paper_topic"] = new_topic
     else:
@@ -67,9 +77,9 @@ def player_combo():
 def player_sparty_ch_1():
     paper_topic = game_state["paper_topic"]
     choice=input("What do you say?\n "
-                      f"    1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'\n"
-                      "     2. 'You know, I should be working on my paper, but this seems a lot more exciting!'\n"
-                      "     3. You don't say anything, freezing, instead. \n").strip().lower()
+                    f"    1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'\n"
+                    "     2. 'You know, I should be working on my paper, but this seems a lot more exciting!'\n"
+                    "     3. You don't say anything, freezing, instead. \n>").strip().lower()
     if choice == "1" or choice == "one":
         print('He stomps and puts his hands on his hips, saying, "--"\n')
         choice = input("What do you say?\n "
@@ -83,7 +93,8 @@ def player_sparty_ch_1():
         choice = input("What do you say?\n "
                            "    1. 'I know, I'll get my paper on {paper_topic} done later.'\n"
                            "    2. 'Of course I would go to the convention for you, Sparty!'\n"
-                           "    3. ''").strip().lower()
+                           "    3. ''\n>").strip().lower()
+
     if choice == "3" or choice == "three":
         print("Somehow, he gets closer to you and add more here")
     else:
@@ -92,7 +103,12 @@ def player_sparty_ch_1():
 
 def river_restaurant():
     """Restaurant choice function - similar structure to player_combo"""
-
+    restaurant = ["Kimchi Box",
+                  "Playa Bowl",
+                  "Raisin' Canes",
+                  "Five Guys",
+                  "Detroit Wing company",
+                  "Walk back to the Union"]
     restaurant_options = {
         "1": ("royal beef bulgogi bento", "kimchi_box"),
         "one": ("royal beef bulgogi bento", "kimchi_box"),
@@ -109,14 +125,7 @@ def river_restaurant():
     }
 
     for attempt in range(5):
-        restaurant_choice = input("What are you going to choose?\n"
-                                  "  1. Kimchi Box\n"
-                                  "  2. Playa Bowl\n"
-                                  "  3. Raisin' Canes\n"
-                                  "  4. Five Guys\n"
-                                  "  5. Detroit Wing company\n"
-                                  "  6. Walk back to the Union\n> ").strip().lower()
-
+        restaurant_choice = get_choice(restaurant)
         if restaurant_choice in restaurant_options:
             meal_text, restaurant_id = restaurant_options[restaurant_choice]
 
@@ -149,52 +158,16 @@ def eat_riv():
         river_restaurant()
     else:
         print("You decide not to eat and continue on.\n")
-def sticker_booth():
-    if game_state['meet_sparty'] and game_state['meet_otto'] == True:
-    #make some game save logic for if the player has and has not met certain mascots
-        print("A few dozen boxes of stickers lay before you on the vendor's table. "
-          "You only recognize Sparty and Otto by name, but the other stickers look pretty cool too."
-          "")
 
-    elif game_state['meet_sparty'] == True and game_state['meet_otto'] == False:
-        print("A few dozen boxes of stickers lay before you on the vendor's table. "
-              "You only recognize Sparty.")
-    #add the rest of the mascots to this logic
-
-    choice = input("Would you like to buy a sticker? Type 'yes' or 'no'\n")
-    if choice ==("yes", "y"):
-        game_state["get_stickers"] = True
-        #maybe add some turtle logic here? let the player see the stickers
-
-def mascot_cafe():
-    game_state["meet_brutus"] = True
-    print("Wandering over to the mascot cafe, it looks just as busy"
-          "as the rest of the convention. People are sitting at tables and being"
-          "waited on by mascots that you don't know.\n"
-          "Upon sitting down, a mascot comes up to you.\n"
-          "'Hi, I'm Brutus. I'll be taking care of you today. what can I get you?")
-def eating_contest():
-    print("When you get to the stall you can't help but notice CONTINUE")
-
-def eating_contest_watch():
-
-def artist_alley():
-    
-    print("Wow! There's so much good art here! Vendors have traveled here from all over"
-          "with their own mascots. Some of the mascots are ones you've never seen before.")
-    choice = input("The sticker booth on your left seems promising, do you want to check it out?"
-                   "\nType 'yes' or 'no'\n> ").lower()
-    if choice == ("yes", "y"):
-        sticker_booth()
-    else:
-        pass
-
-def mascot_panels():
-    pass
-def meet_n_greets():
-    print("Looking across the room, you observe the many different ")
 
 def breslinch1():
+    activities = [
+        "The mascot café",
+        "The eating contest",
+        "The artist alley",
+        "The mascot panels",
+        "The meet & greets"
+    ]
     paper_topic = game_state["paper_topic"]
     choice = input("What do you say?\n"
                         "   1. 'You know what? I've seen enough, I really need to "
@@ -214,12 +187,7 @@ def breslinch1():
     elif choice == "2":
         print("Well, there's the mascot café, eating contest, artist alley, mascot panels, meet & greets,"
               "")
-        choice = input("Which do you choose?\n"
-                       "    1. The mascot café\n"
-                       "    2. The eating contest\n"
-                       "    3. The artist alley\n"
-                       "    4. The mascot panels\n "
-                       "    5. The meet & greets\n")
+        choice = get_choice(activities)
         if choice == "1":
              mascot_cafe()
         elif choice == "2":

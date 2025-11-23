@@ -143,3 +143,57 @@ def breslin():
           "Walking around, you see a giant orange ball. It comes up to you and introduces itself.\n")
     print("'Hi, I'm Otto! Have you been to any of the events yet?'")
     breslinch1()
+
+
+def sticker_booth():
+    if game_state['meet_sparty'] and game_state['meet_otto'] == True:
+        # make some game save logic for if the player has and has not met certain mascots
+        print("A few dozen boxes of stickers lay before you on the vendor's table. "
+              "You only recognize Sparty and Otto by name, but the other stickers look pretty cool too."
+              "")
+
+    elif game_state['meet_sparty'] == True and game_state['meet_otto'] == False:
+        print("A few dozen boxes of stickers lay before you on the vendor's table. "
+              "You only recognize Sparty.")
+    # add the rest of the mascots to this logic
+
+    choice = input("Would you like to buy a sticker? Type 'yes' or 'no'\n")
+    if choice == ("yes", "y"):
+        game_state["get_stickers"] = True
+        # maybe add some turtle logic here? let the player see the stickers
+
+
+def mascot_cafe():
+    game_state["meet_brutus"] = True
+    print("Wandering over to the mascot cafe, it looks just as busy"
+          "as the rest of the convention. People are sitting at tables and being"
+          "waited on by mascots that you don't know.\n"
+          "Upon sitting down, a mascot comes up to you.\n"
+          "'Hi, I'm Brutus. I'll be taking care of you today. what can I get you?")
+
+
+def eating_contest():
+    print("When you get to the stall you can't help but notice CONTINUE")
+
+
+def eating_contest_watch():
+    pass
+
+
+def artist_alley():
+    print("Wow! There's so much good art here! Vendors have traveled here from all over"
+          "with their own mascots. Some of the mascots are ones you've never seen before.")
+    choice = input("The sticker booth on your left seems promising, do you want to check it out?"
+                   "\nType 'yes' or 'no'\n> ").lower()
+    if choice == ("yes", "y"):
+        sticker_booth()
+    else:
+        pass
+
+
+def mascot_panels():
+    pass
+
+
+def meet_n_greets():
+    print("Looking across the room, you observe the many different ")
