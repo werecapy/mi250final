@@ -72,86 +72,49 @@ def player_combo():
         print("Ultimately, you decide to pass on a delicious combo.")
 
 
-
-
-def player_sparty_ch_1():
-    paper_topic = game_state["paper_topic"]
-    choice=input("What do you say?\n "
-                    f"    1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'\n"
-                    "     2. 'You know, I should be working on my paper, but this seems a lot more exciting!'\n"
-                    "     3. You don't say anything, freezing, instead. \n>").strip().lower()
-    if choice == "1" or choice == "one":
-        print('He stomps and puts his hands on his hips, saying, "--"\n')
-        choice = input("What do you say?\n "
-                           "    1. 'I know, I know, but it's 20% of my grade! If I don't do it, I'm screwed!'\n"
-                           "    2. 'Maybe I can take a break for today.'\n"
-                           "    3. 'C'mon Sparty, you know I would go if I could!'\n").strip().lower()
-
-    if choice == "2" or choice == "two":
-
-        print('He gives you an aggressive thumbs up and says, "--"')
-        choice = input("What do you say?\n "
-                           "    1. 'I know, I'll get my paper on {paper_topic} done later.'\n"
-                           "    2. 'Of course I would go to the convention for you, Sparty!'\n"
-                           "    3. ''\n>").strip().lower()
-
-    if choice == "3" or choice == "three":
-        print("Somehow, he gets closer to you and add more here")
-    else:
-        print("Sorry, I don't understand that.")
-
-
 def river_restaurant():
-    """Restaurant choice function - similar structure to player_combo"""
-    restaurant = ["Kimchi Box",
-                  "Playa Bowl",
-                  "Raisin' Canes",
-                  "Five Guys",
-                  "Detroit Wing company",
-                  "Walk back to the Union"]
+    """Restaurant choice on Grand River"""
     restaurant_options = {
         "1": ("royal beef bulgogi bento", "kimchi_box"),
-        "one": ("royal beef bulgogi bento", "kimchi_box"),
-        "2": ("orange power", "playa_bowl"),
-        "two": ("orange power", "playa_bowl"),
+        "2": ("orange power bowl", "playa_bowl"),
         "3": ("caniac combo", "raisin_canes"),
-        "three": ("caniac combo", "raisin_canes"),
         "4": ("double cheeseburger with a small fry", "five_guys"),
-        "four": ("double cheeseburger with a small fry", "five_guys"),
         "5": ("10 traditional wings with buffalo sauce", "dwc"),
-        "five": ("10 traditional wings with buffalo sauce", "dwc"),
         "6": (None, "union"),
-        "six": (None, "union")
     }
 
     for attempt in range(5):
-        restaurant_choice = get_choice(restaurant)
+        restaurant_choice = input(
+            "What are you going to choose?\n"
+            "  1. Kimchi Box\n"
+            "  2. Playa Bowl\n"
+            "  3. Raisin' Canes\n"
+            "  4. Five Guys\n"
+            "  5. Detroit Wing Company\n"
+            "  6. Walk back to the Union\n> "
+        ).strip().lower()
+
         if restaurant_choice in restaurant_options:
             meal_text, restaurant_id = restaurant_options[restaurant_choice]
 
-            # Check if they want to go back to union
             if restaurant_id == "union":
-                print("The walk back to the Union is pleasant.\n")
                 from locations import union
+                print("The walk back to the Union is pleasant.\n")
                 union()
                 return
-
-            # Otherwise they purchased a meal
             else:
                 print(f"There are so many great choices on this menu, it's hard to pick just one!\n"
                       f"You end up picking {meal_text}.\n")
                 purchase_meal(restaurant_id, meal_text)
                 return
-
         else:
             print("Sorry, I don't understand that. Try again.\n")
 
-    # If they didn't choose after 5 attempts
     print("You couldn't decide and left the restaurant.")
 
 
 def eat_riv():
-    """Wrapper function to ask if player wants to eat"""
+    """Ask if player wants to eat at a restaurant"""
     choice = input("Are you in the mood to eat? Type 'yes' or 'no'\n> ").lower()
     if choice in ("yes", "y"):
         print("You think about the wonderful restaurants along Grand River.\n")
@@ -160,96 +123,6 @@ def eat_riv():
         print("You decide not to eat and continue on.\n")
 
 
-def breslinch1():
-    activities = [
-        "The mascot café",
-        "The eating contest",
-        "The artist alley",
-        "The mascot panels",
-        "The meet & greets"
-    ]
-    paper_topic = game_state["paper_topic"]
-    choice = input("What do you say?\n"
-                        "   1. 'You know what? I've seen enough, I really need to "
-                        "head back to the library.'\n"
-                        "   2. 'I've seen some things, but not everything."
-                        "What are some of the events happening?'\n"
-                        "   3. 'What do you think I should do?'")
-    if choice == "1":
-        print("Awwwww, c'mon! The mascot convention only happens once a year!")
-        choice = input("What do you say?\n"
-                       "    1. 'Well, now that I'm here, I can see mascots really aren't my thing. Sorry Otto.'\n"
-                       f"    2. 'Otto, I really have to go work on my paper. It's about {paper_topic}, a really difficult topic'\n"
-                       "    3. \n"
-                       "    4.\n")
-        if choice == "1":
-            pass
-    elif choice == "2":
-        print("Well, there's the mascot café, eating contest, artist alley, mascot panels, meet & greets,"
-              "")
-        choice = get_choice(activities)
-        if choice == "1":
-             mascot_cafe()
-        elif choice == "2":
-            if game_state["combo_purchase"] == True:
-                print("You already have food in your bag...\n")
-                choice = input("Do you still want to go?\n"
-                               "Type 'yes' or 'no'\n> ").lower()
-                if choice == "yes":
-                    print("Maybe you'll just go to watch.")
-                    eating_contest_watch()
-        elif choice == "3":
-            artist_alley()
-        elif choice == "4":
-            mascot_panels()
-        elif choice == "5":
-            meet_n_greets()
-
-    elif choice == "3":
-        pass
 
 
-def sit_in_beal():
-    game_state["sit_in_beal"] = True
-    game_state['meet_tereesa']= True
-    if game_state["combo_type"] == "woody_combo":
-        print("Sitting in a somewhat secluded part of the garden, you feast on your delicious"
-              "Woody's burrito. They never seem to disappoint. Your drink is somehow still cold"
-              "and incredibly refreshing. Between the bites of burrito and sips of your "
-              "energy drink,"
-              "you come to notice that the standing next to you isn't really a tree at all!\n")
-        time.sleep(3)
-        print("It's a mascot!\n"
-              "'Darn it! You noticed!' it exclaims.\n")
-        choice = input("What do you say?\n"
-                       "    1. 'Um, yeah I noticed.' It was incredibly obvious.\n"
-                       "    2. 'No I didn't! Not until you said something. I don't"
-                       "have my glasses on.'\n"
-                       "    3. You totally ignore it. Maybe it will go away.\n")
-    elif game_state["combo_type"] == "ramen combo":
-        print("Well, you really didn't think that one through. You debate eating"
-              "the raw noodles, but that would be too sad. Luckily, your juice is still cold,"
-              "and it rejuvenates your spirit. As you open your fruit cup,you come to notice that the tree standing"
-              " next to you isn't really a tree at all!\n")
-        time.sleep(3)
-        print("It's a mascot!\n"
-              "'Darn it! You noticed!' it exclaims.\n")
-        choice = input("What do you say?\n"
-                       "    1. 'Um, yeah I noticed.' It was incredibly obvious.\n"
-                       "    2. 'No I didn't! Not until you said something. I don't"
-                       "have my glasses on.'\n"
-                       "    3. You totally ignore it. Maybe it will go away.\n")
-    elif game_state["combo_type"] == "protein_combo":
-        print("It might not be the most glamorous meal ever, but it works. The"
-              "protein drink satiates your hunger and the water quenches your thirst.\n"
-              "Just before you open your trail mix,you come to notice that the tree standing"
-              " next to you isn't really a tree at all!\n")
 
-        time.sleep(3)
-        print("It's a mascot!\n"
-              "'Darn it! You noticed!' it exclaims.\n")
-        choice = input("What do you say?\n"
-                       "    1. 'Um, yeah I noticed.' It was incredibly obvious.\n"
-                       "    2. 'No I didn't! Not until you said something. I don't"
-                       "have my glasses on.'\n"
-                       "    3. You totally ignore it. Maybe it will go away.\n")

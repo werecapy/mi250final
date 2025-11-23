@@ -11,3 +11,19 @@
 # locations.py (imports game_state, player_choice_functions)
 #     ↑
 # main.py (imports everything else)
+
+
+
+3. **Follow this import hierarchy** (bottom imports from top):
+```
+   main.py
+       ↓
+   locations.py
+       ↓
+   player_choice_functions.py
+       ↓
+   dialogues.py
+       ↓
+   dialogue.py
+       ↓
+   game_state.py (no imports)
