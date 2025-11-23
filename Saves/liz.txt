@@ -22,3 +22,7 @@ This user's name is liz.
 This user's gender is female.
 This user's pronouns are ['she', 'her', 'hers'].
 This user is 25 years old.
+This user's name is liz.
+This user's gender is female.
+This user's pronouns are ['she', 'her', 'hers'].
+This user is 25 years old.

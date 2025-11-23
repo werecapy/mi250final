@@ -1,6 +1,8 @@
 # Can import game_state, but NOT main.py
 import random
-from game_state import game_state, purchase_combo, purchase_meal
+import time
+
+from game_state import game_state, purchase_combo, purchase_meal,
 
 paper_topic_list = ['sleep disorders', 'nuclear power',
                     "social media interaction", 'book bans']
@@ -66,7 +68,7 @@ def player_combo():
 def player_sparty_ch_1():
     paper_topic = game_state["paper_topic"]
     choice=input("What do you say?\n "
-                      f"    1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'"
+                      f"    1. 'Sorry Sparty, but I have to go write a 10 page paper on {paper_topic}.'\n"
                       "     2. 'You know, I should be working on my paper, but this seems a lot more exciting!'\n"
                       "     3. You don't say anything, freezing, instead. \n").strip().lower()
     if choice == "1" or choice == "one":
@@ -191,7 +193,8 @@ def mascot_panels():
 def meet_n_greets():
     print("Looking across the room, you observe the many different ")
 
-def breslinch1(paper_topic):
+def breslinch1():
+    paper_topic = game_state["paper_topic"]
     choice = input("What do you say?\n"
                         "   1. 'You know what? I've seen enough, I really need to "
                         "head back to the library.'\n"
@@ -232,3 +235,22 @@ def breslinch1(paper_topic):
     elif choice == "3":
         pass
 
+
+def sit_in_beal():
+    if game_state["combo_type"] == "woody_combo":
+        print("Sitting in a somewhat secluded part of the garden, you feast on your delicious"
+              "Woody's burrito. They never seem to disappoint. Your drink is somehow still cold"
+              "and incredibly refreshing. Between the bites of burrito and sips of your energy drink,"
+              "you come to notice that the standing next to you isn't really a tree at all!\n")
+        time.sleep(3)
+        print("It's a mascot!\n"
+              "'Darn it! You noticed!' it exclaims.\n")
+        choice = input("What do you say?\n"
+                       "    1. 'Um, yeah I noticed.' It was incredibly obvious.\n"
+                       "    2. ''\n"
+
+                       )
+    elif game_state["combo_type"] == "ramen combo":
+        pass
+    elif game_state["combo_type"] == "protein_combo":
+        pass

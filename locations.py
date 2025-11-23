@@ -8,6 +8,7 @@ from player_choice_functions import (
     player_sparty_ch_1,
     breslinch1,
     eat_riv,
+    sit_in_beal
 
 )
 
@@ -27,7 +28,7 @@ def union():
         player_combo()
     print("You continue through the union...\n")
     choice = input("What do you want to do next?\n"
-                   "    1. Go to the library\n"
+                   "    1. Walk to the library\n"
                    "    2. Eat your combo.\n").strip().lower()
     if choice == "1":
         walk_through_greenspace1()
@@ -38,6 +39,30 @@ def union():
             pass
         elif combo_type == "protein_combo":
             pass
+        else:
+            print("You silly goose, you never bought a combo! Would you like to?\n")
+            choice = input("Enter 'yes' or 'no':\n>")
+            if choice == "yes":
+                player_combo()
+                choice = input("What do you want to do next?\n"             
+                               "    1. Walk to the library\n"               
+                               "    2. Eat your combo.\n").strip().lower()
+                if choice == "1":
+                    walk_through_greenspace1()
+                if choice == "2":
+                    sit_in_beal()
+                    if combo_type == "woody_combo":
+                        pass
+                    elif combo_type == "ramen combo":
+                        pass
+                    elif combo_type == "protein_combo":
+                        pass
+
+
+
+
+
+
 
 
 
@@ -45,12 +70,17 @@ def union():
 
 def walk_through_greenspace1():
     print("Wow, it *really* is a great day! There's a perfect amount of cloud cover "
-          "and a light enough breeze to not feel too chilly. Squirrels are bounding about, "
+          "and a light enough breeze to not feel too chilly. The green space is indeed green!"
+          " Squirrels are bounding about, "
           "living their best furry lives. You get jealous of them because you think about "
           "the 10 page paper you have to complete before next week about... what was it again?\n")
     paper_topic_choice()
-    input("Press enter to continue...")
+    input("Press enter to continue...\n")
     library()
+
+def walk_through_greenspace2():
+    print("The sun is not quitting and neither are you! As you walk to the nearest bench"
+          "to eat your combo, you notiv")
 
 def library():
     game_state["meet_sparty"] = True

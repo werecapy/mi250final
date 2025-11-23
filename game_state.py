@@ -14,9 +14,9 @@ game_state = {
     "get_stickers": False,
     "stickers": [],
     "meet_brutus": False,
-"meal_purchased" : False,
-"meal_type":None,
-"meal_name":None,
+    "meal_purchased" : False,
+    "meal_type":None,
+    "meal_name":None,
 
 }
 def set_player_data(name, gender, pronouns, age):
