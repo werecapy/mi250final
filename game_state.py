@@ -17,6 +17,7 @@ game_state = {
     "meal_purchased" : False,
     "meal_type":None,
     "meal_name":None,
+    'meet_tereesa': False,
 
 }
 def set_player_data(name, gender, pronouns, age):

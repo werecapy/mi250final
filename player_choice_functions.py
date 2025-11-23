@@ -2,11 +2,10 @@
 import random
 import time
 
-from game_state import game_state, purchase_combo, purchase_meal,
+from game_state import game_state, purchase_combo, purchase_meal
 
 paper_topic_list = ['sleep disorders', 'nuclear power',
                     "social media interaction", 'book bans']
-
 
 def paper_topic_choice():
     if random.random() < 0.5:
@@ -177,6 +176,8 @@ def mascot_cafe():
 def eating_contest():
     print("When you get to the stall you can't help but notice CONTINUE")
 
+def eating_contest_watch():
+
 def artist_alley():
     
     print("Wow! There's so much good art here! Vendors have traveled here from all over"
@@ -223,8 +224,12 @@ def breslinch1():
              mascot_cafe()
         elif choice == "2":
             if game_state["combo_purchase"] == True:
-               print("You already have food in your bag...")
-            eating_contest()
+                print("You already have food in your bag...\n")
+                choice = input("Do you still want to go?\n"
+                               "Type 'yes' or 'no'\n> ").lower()
+                if choice == "yes":
+                    print("Maybe you'll just go to watch.")
+                    eating_contest_watch()
         elif choice == "3":
             artist_alley()
         elif choice == "4":
@@ -237,20 +242,46 @@ def breslinch1():
 
 
 def sit_in_beal():
+    game_state["sit_in_beal"] = True
+    game_state['meet_tereesa']= True
     if game_state["combo_type"] == "woody_combo":
         print("Sitting in a somewhat secluded part of the garden, you feast on your delicious"
               "Woody's burrito. They never seem to disappoint. Your drink is somehow still cold"
-              "and incredibly refreshing. Between the bites of burrito and sips of your energy drink,"
+              "and incredibly refreshing. Between the bites of burrito and sips of your "
+              "energy drink,"
               "you come to notice that the standing next to you isn't really a tree at all!\n")
         time.sleep(3)
         print("It's a mascot!\n"
               "'Darn it! You noticed!' it exclaims.\n")
         choice = input("What do you say?\n"
                        "    1. 'Um, yeah I noticed.' It was incredibly obvious.\n"
-                       "    2. ''\n"
-
-                       )
+                       "    2. 'No I didn't! Not until you said something. I don't"
+                       "have my glasses on.'\n"
+                       "    3. You totally ignore it. Maybe it will go away.\n")
     elif game_state["combo_type"] == "ramen combo":
-        pass
+        print("Well, you really didn't think that one through. You debate eating"
+              "the raw noodles, but that would be too sad. Luckily, your juice is still cold,"
+              "and it rejuvenates your spirit. As you open your fruit cup,you come to notice that the tree standing"
+              " next to you isn't really a tree at all!\n")
+        time.sleep(3)
+        print("It's a mascot!\n"
+              "'Darn it! You noticed!' it exclaims.\n")
+        choice = input("What do you say?\n"
+                       "    1. 'Um, yeah I noticed.' It was incredibly obvious.\n"
+                       "    2. 'No I didn't! Not until you said something. I don't"
+                       "have my glasses on.'\n"
+                       "    3. You totally ignore it. Maybe it will go away.\n")
     elif game_state["combo_type"] == "protein_combo":
-        pass
+        print("It might not be the most glamorous meal ever, but it works. The"
+              "protein drink satiates your hunger and the water quenches your thirst.\n"
+              "Just before you open your trail mix,you come to notice that the tree standing"
+              " next to you isn't really a tree at all!\n")
+
+        time.sleep(3)
+        print("It's a mascot!\n"
+              "'Darn it! You noticed!' it exclaims.\n")
+        choice = input("What do you say?\n"
+                       "    1. 'Um, yeah I noticed.' It was incredibly obvious.\n"
+                       "    2. 'No I didn't! Not until you said something. I don't"
+                       "have my glasses on.'\n"
+                       "    3. You totally ignore it. Maybe it will go away.\n")

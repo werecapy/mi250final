@@ -5,7 +5,6 @@ player_dict = {
 }
 
 
-
 class PlayerInfo:
     def __init__(self):
         self.player_name = user_name
