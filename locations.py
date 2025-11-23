@@ -5,8 +5,8 @@ from game_state import game_state
 from player_choice_functions import (
     player_combo,
     paper_topic_choice,
-    player_sparty_ch_1,
-    breslinch1,
+
+
     eat_riv,
     sit_in_beal
 

@@ -6,7 +6,7 @@ from game_state import game_state, purchase_combo, purchase_meal
 
 paper_topic_list = ['sleep disorders', 'nuclear power',
                     "social media interaction", 'book bans']
-print(paper_topic_list)
+#print(paper_topic_list)
 def get_choice(options):
     print("Which do you choose?")
     for i, option in enumerate(options, 1):
@@ -123,6 +123,24 @@ def eat_riv():
         print("You decide not to eat and continue on.\n")
 
 
+def sit_in_beal():
+    """Eat a meal in Beal Garden - meet Tereesa"""
+    game_state["sit_in_beal"] = True
 
+    combo_type = game_state.get("combo_type")
 
+    if combo_type == "woody_combo":
+        print("Sitting in a secluded part of the garden, you feast on your delicious "
+              "Woody's burrito...\n")
+    elif combo_type == "ramen_combo":
+        print("Well, you didn't think that through. The noodles are raw...\n")
+    elif combo_type == "protein_combo":
+        print("It might not be glamorous, but it works...\n")
 
+    time.sleep(2)
+    print("You notice the tree next to you isn't really a tree at all!\n")
+    print("It's a mascot!\n")
+
+    # Import here to avoid circular import
+    from dialogues import player_tereesa_ch_1
+    player_tereesa_ch_1()

@@ -42,6 +42,23 @@ def talk_to_mascot():
     game_state['meet_tereesa'] = True
 
 
+# ============ WRAPPER FUNCTIONS ============
+def player_sparty_ch_1():
+    """Called from library()"""
+    sparty_start.display()
+
+def player_otto_ch_1():
+    """Called from breslin()"""
+    otto_start.display()
+
+def player_brutus_ch_1():
+    """Called from mascot_cafe()"""
+    brutus_start.display()
+
+def player_tereesa_ch_1():
+    """Called from sit_in_beal()"""
+    tereesa_start.display()
+
 # ============ SPARTY DIALOGUE TREE ============
 
 sparty_response_to_paper = dialogue_node(
