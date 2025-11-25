@@ -171,17 +171,20 @@ brutus_start = dialogue_node(
 
 
 # ============ TEREESA (GARDEN MASCOT) DIALOGUE TREE ============
+talk_to_tereesa1 = dialogue_node(
+
+)
 
 tereesa_response_to_notice = dialogue_node(
     "It jumps back in surprise! 'Darn it! You noticed me!'\n",
     {
         ("1", "one"): (
             "'Um, yeah I noticed.' It was incredibly obvious.",
-            talk_to_mascot
+            talk_to_tereesa1
         ),
         ("2", "two"): (
             "'No I didn't! Not until you said something. I don't have my glasses on.'",
-            talk_to_mascot
+            talk_to_tereesa2
         ),
         ("3", "three"): (
             "You totally ignore it. Maybe it will go away.",
