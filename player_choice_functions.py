@@ -139,7 +139,7 @@ def sit_in_beal():
 
     time.sleep(2)
     print("You notice the tree next to you isn't really a tree at all!\n")
-    print("It's a mascot!\n")
+
 
     # Import here to avoid circular import
     from dialogues import player_tereesa_ch_1

@@ -173,6 +173,7 @@ brutus_start = dialogue_node(
 # ============ TEREESA (GARDEN MASCOT) DIALOGUE TREE ============
 talk_to_tereesa1 = dialogue_node(
 
+
 )
 
 tereesa_response_to_notice = dialogue_node(
@@ -194,7 +195,7 @@ tereesa_response_to_notice = dialogue_node(
 )
 
 tereesa_start = dialogue_node(
-    "A mascot emerges from behind the tree!\n",
+    "It's a mascot!\n",
     {
         ("1", "one"): ("Acknowledge the mascot", tereesa_response_to_notice),
     }
