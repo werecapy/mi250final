@@ -37,7 +37,9 @@ def quit_program(prompt):
 
 
 def greet():
-    print("Welcome to Mascot Dating Simulator!")
+    print("="*50)
+    print("Welcome to Mascot Dating Simulator!\n")
+    print("=" * 50)
     user_name = input("What is your name? ")
     print("Hello, " + user_name + "!")
 

@@ -1,5 +1,5 @@
 # ============ dialogue.py (FIXED) ============
-# Fix the typo: "dialouge_node" -> "DialogueNode"
+
 
 class dialogue_node:
     def __init__(self, text, options, on_enter=None):
