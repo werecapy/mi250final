@@ -177,11 +177,20 @@ brutus_start = dialogue_node(
 
 
 # ============ TEREESA (GARDEN MASCOT) DIALOGUE TREE ============
+pamphlet = dialogue_node(
+    "not finished, should show player pamphlet and let the player react to it.",
+    {("1", "one"): ("pass",None)
+
+    }
+)
 redirect = dialogue_node(
     "'I'm supposed to give this to you,' she says while sliding a paper toward you on the bench.\n",
     { ("1", "one"): (
         "You're not thrilled someone is giving you a piece of paper. 'Thanks,' you say, taking the paper.",
-    )}
+    ),
+        ('2','two'): (
+            "You take the paper, looking it over. It's for a mascot convention?", pamphlet
+        )}
 )
 prune_yourself = dialogue_node(
     "'Wow... that can be surprisingly deep if you think about it long enough.'\n",
@@ -190,7 +199,7 @@ prune_yourself = dialogue_node(
             None),
     ("2", "two"): ("'Let's not get too deep into that, I need to go to the library.'",
                    None),
-    ('3', 'three'): ("You both stare at eachother for a minute before Tereesa breaks the silence.",redirect)
+    ('3', 'three'): ("You both stare at each other for a minute before Tereesa breaks the silence.",redirect)
 
 
 
@@ -201,7 +210,7 @@ prune_yourself = dialogue_node(
 shuffling = dialogue_node(
     "'Ugh, I knew I should have pruned those extra branches!' She begins to try and tame the wildness.",
 {("1","one"):(
-        "'I think if you pruned brances, then you would look even more out of place.'",
+        "'I think if you pruned branches, then you would look even more out of place.'",
             None ),
         ("2", "two"): (
         "'You good amazing just the way you are, don't prune yourself to fit in.'",
@@ -214,11 +223,11 @@ watched = dialogue_node(
     "Well I suppose there's nothing I could have done about that\n",
     {('1','one'):(
     "'No, not really. Is there any reason you're trying to hide out in public?'",
-        NEXT DIALOGUES
+        None
 ),
     ("2", "two"): (
         "'INSERT'",
-                   NEXT DIALOGUES
+                  None
                    ),
 
  }
@@ -229,7 +238,7 @@ gave_away = dialogue_node(
     {("1", "one"): (
         "'You're not tall enough to be a real tree.' The mascot "
                 "doesn't look anything like the other trees around.",
-                    NEXT DIALOGUES),
+                    None),
     ("2", "two"): (
         "'I could hear you shuffling.'",
                    shuffling
@@ -246,14 +255,14 @@ blew_cover = dialogue_node(
     "So I blew my own cover again, that really sucks!",
     {("1", "one"): (
     '\'It\'s okay, you tried your best.\'',
-                NEXT DIALOGUES)
+                None)
     ,
     ("2", "two"): ("'You were trying to be covert?'",
-                   NEXT DIALOGUES
+                   None
                    ),
     ("3", "three"): (
             "What are you doing?",
-            NEXT DIALOGUES
+            None
         ),
 }
     )
