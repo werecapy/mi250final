@@ -223,7 +223,7 @@ watched = dialogue_node(
     "Well I suppose there's nothing I could have done about that\n",
     {('1','one'):(
     "'No, not really. Is there any reason you're trying to hide out in public?'",
-        None
+        pamphlet
 ),
     ("2", "two"): (
         "'INSERT'",
