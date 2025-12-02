@@ -139,12 +139,13 @@ def sticker_booth():
     """Sticker booth at artist alley"""
     print("A few dozen boxes of stickers lay before you on the vendor's table.\n")
 
-    if game_state['meet_sparty'] and game_state['meet_otto']:
+    if game_state['meet_otto'] is True:
         print("You recognize Sparty and Otto stickers, plus many others!\n")
-    elif game_state['meet_sparty']:
-        print("You recognize Sparty stickers and many others!\n")
+    elif game_state['meet_otto'] and  game_state['meet_tereesa'] is True :
+        print("You see Sparty, Otto, and Tereesa among all the stickers.")
+
     else:
-        print("You see lots of different mascot stickers.\n")
+        print("You recognize Sparty stickers and many others!\n")
 
     choice = input("Would you like to buy a sticker? Type 'yes' or 'no'\n> ").lower()
     if choice in ("yes", "y"):

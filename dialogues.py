@@ -41,6 +41,12 @@ def talk_to_mascot():
     print("The mascot seems pleased!\n")
     game_state['meet_tereesa'] = True
 
+def take_brochure():
+    pass
+    #this will have to connect back to player choices or something because the
+    # brochure needs to go in the backpack
+
+
 
 # ============ WRAPPER FUNCTIONS ============
 def player_sparty_ch_1():
@@ -80,7 +86,7 @@ sparty_response_to_paper = dialogue_node(
 )
 
 sparty_response_to_excitement = dialogue_node(
-    "He gives you an aggressive thumbs up and says, 'YES! Let's gooo!'\n",
+    "He gives you an aggressive thumbs up, '-.'\n",
     {
         ("1", "one"): (
             "'I know, I'll get my paper done later.'",
@@ -163,29 +169,105 @@ otto_start = dialogue_node(
 brutus_start = dialogue_node(
     "'Hi, I'm Brutus. I'll be taking care of you today. What can I get you?'\n",
     {
-        ("1", "one"): ("'Just water, thanks.'", None),
-        ("2", "two"): ("'I'll have a coffee.'", None),
-        ("3", "three"): ("'Can I get a recommendation?'", None),
+        ("1", "one"): ("'.'", None),
+        ("2", "two"): ("'.'", None),
+        ("3", "three"): ("'.'", None),
     }
 )
 
 
 # ============ TEREESA (GARDEN MASCOT) DIALOGUE TREE ============
-talk_to_tereesa1 = dialogue_node(
+redirect = dialogue_node(
+    "'I'm supposed to give this to you,' she says while sliding a paper toward you on the bench.\n",
+    { ("1", "one"): (
+        "You're not thrilled someone is giving you a piece of paper. 'Thanks,' you say, taking the paper.",
+    )}
+)
+prune_yourself = dialogue_node(
+    "'Wow... that can be surprisingly deep if you think about it long enough.'\n",
+    { ("1", "one"): (
+        "'Yeah, I guess it can. Anyway, was there a reason you were hiding?'",
+            None),
+    ("2", "two"): ("'Let's not get too deep into that, I need to go to the library.'",
+                   None),
+    ('3', 'three'): ("You both stare at eachother for a minute before Tereesa breaks the silence.",redirect)
+
+
+
+
+},
+)
+
+shuffling = dialogue_node(
+    "'Ugh, I knew I should have pruned those extra branches!' She begins to try and tame the wildness.",
+{("1","one"):(
+        "'I think if you pruned brances, then you would look even more out of place.'",
+            None ),
+        ("2", "two"): (
+        "'You good amazing just the way you are, don't prune yourself to fit in.'",
+            prune_yourself)
+ },
 
 
 )
+watched = dialogue_node(
+    "Well I suppose there's nothing I could have done about that\n",
+    {('1','one'):(
+    "'No, not really. Is there any reason you're trying to hide out in public?'",
+        NEXT DIALOGUES
+),
+    ("2", "two"): (
+        "'INSERT'",
+                   NEXT DIALOGUES
+                   ),
 
-tereesa_response_to_notice = dialogue_node(
+ }
+
+)
+gave_away = dialogue_node(
+    "What gave me away?\n",
+    {("1", "one"): (
+        "'You're not tall enough to be a real tree.' The mascot "
+                "doesn't look anything like the other trees around.",
+                    NEXT DIALOGUES),
+    ("2", "two"): (
+        "'I could hear you shuffling.'",
+                   shuffling
+                   ),
+     ("3", "three"): (
+         "I felt like I was being watched.",
+         watched
+     )
+
+ }
+
+    )
+blew_cover = dialogue_node(
+    "So I blew my own cover again, that really sucks!",
+    {("1", "one"): (
+    '\'It\'s okay, you tried your best.\'',
+                NEXT DIALOGUES)
+    ,
+    ("2", "two"): ("'You were trying to be covert?'",
+                   NEXT DIALOGUES
+                   ),
+    ("3", "three"): (
+            "What are you doing?",
+            NEXT DIALOGUES
+        ),
+}
+    )
+
+tereesa_start = dialogue_node(
     "It jumps back in surprise! 'Darn it! You noticed me!'\n",
     {
         ("1", "one"): (
             "'Um, yeah I noticed.' It was incredibly obvious.",
-            talk_to_tereesa1
+            gave_away
         ),
         ("2", "two"): (
             "'No I didn't! Not until you said something. I don't have my glasses on.'",
-            talk_to_tereesa2
+            blew_cover
         ),
         ("3", "three"): (
             "You totally ignore it. Maybe it will go away.",
@@ -194,9 +276,4 @@ tereesa_response_to_notice = dialogue_node(
     }
 )
 
-tereesa_start = dialogue_node(
-    "It's a mascot!\n",
-    {
-        ("1", "one"): ("Acknowledge the mascot", tereesa_response_to_notice),
-    }
-)
+
