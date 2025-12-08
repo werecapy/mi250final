@@ -60,13 +60,14 @@ def walk_through_greenspace1():
     library()
 
 def walk_through_greenspace2():
+    """Second green space sequence"""
     print("The sun is not quitting and neither are you! As you walk to the nearest bench"
           "to eat your combo, you notiv")
 
 
 def library():
     """Meet Sparty at the library"""
-    game_state["meet_sparty"] = True
+    game_state["meet_sparty"] = True #Saves whether player has met Sparty or not
     print("Walking through the green space, you finally get to the front of the library. "
           "An interesting flyer catches your attention on the way to your usual study spot.\n")
 
@@ -90,19 +91,19 @@ def down_riv():
           "Even the sign trucks are slowly crawling amongst the crowd of vehicles.\n")
 
     if game_state["meal_purchased"]:
-        meal_name = game_state["meal_name"]
-        print(f"You're carrying your {meal_name}.\n")
+        meal_name = game_state["meal_name"] #Saves whether the player has had a combo or not
+        print(f"You're carrying your {meal_name}.\n") #inserts the type of combo
     else:
         eat_riv()
 
 
 def breslin():
     """Meet Otto at Breslin - enter convention"""
-    game_state["meet_otto"] = True
-    minutes = random.randint(5, 15)
+    game_state["meet_otto"] = True #Saves whether the player has met Otto or not
+    minutes = random.randint(5, 15) #Minute chooser variable
 
     print("There's so many people here!\n"
-          f"It takes about {minutes} minutes to get in.\n"
+          f"It takes about {minutes} minutes to get in.\n" #Chooses how long the player has been standing in line
           "Inside, there's more people than you could have imagined.\n"
           "But it's not just people...")
 
@@ -116,7 +117,7 @@ def breslin():
 
 def mascot_cafe():
     """Meet Brutus at the mascot cafe"""
-    game_state["meet_brutus"] = True
+    game_state["meet_brutus"] = True #Saves whether player has met Brutus or not
     print("Wandering over to the mascot cafe, it looks just as busy "
           "as the rest of the convention. People are sitting at tables and being "
           "waited on by mascots that you don't know.\n"

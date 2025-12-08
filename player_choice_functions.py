@@ -6,29 +6,34 @@ from game_state import game_state, purchase_combo, purchase_meal
 
 paper_topic_list = ['sleep disorders', 'nuclear power',
                     "social media interaction", 'book bans']
-#print(paper_topic_list)
+
 def get_choice(options):
     print("Which do you choose?")
     for i, option in enumerate(options, 1):
+        #Numbers the amount of options and makes a list for player to choose, display only
         print(f"    {i}. {option}")
-    choice = input(f"Enter your choice (1-{len(options)}): ")
+    choice = input(f"Enter your choice (1-{len(options)}): ") #The actual choice players will make
 
     if choice.isdigit() and 1 <= int(choice) <= len(options):
         return int(choice)
     print(f"Please enter a number between 1 and {len(options)}")
 
 def paper_topic_choice():
+    """Players have the random chance of getting to pick their own paper topic."""
     if random.random() < 0.5:
-        new_topic = input("What is your paper on?\n>")
+        #Player chooses their own topic
+        new_topic = input("What is your paper on?\n>")#The actual choice players will make
         paper_topic_list.append(new_topic)
         game_state["paper_topic"] = new_topic
     else:
+        #Paper topic is assigned
         topic = random.choice(paper_topic_list)
         game_state["paper_topic"] = topic
         print(f"Oh, that's right! It was {topic}!")
 
 
 def player_combo():
+    """Player gets to choose combo from Union Sparty's"""
     combo = "none"
     combo_options = {
         "1": ("A Woody's burrito, energy drink, and a bag of chips", "woody_combo"),
@@ -128,7 +133,7 @@ def sit_in_beal():
     game_state["sit_in_beal"] = True
 
     combo_type = game_state.get("combo_type")
-
+    #Logic for each of the different combos
     if combo_type == "woody_combo":
         print("Sitting in a secluded part of the garden, you feast on your delicious "
               "Woody's burrito...\n")

@@ -14,14 +14,21 @@ def go_to_convention():
     from locations import breslin
     breslin()
 
-def go_back_to_library():
-    """Player refuses and goes back to study"""
-    print("You head back to the library to study.\n")
+def write_paper(paper_topic=game_state["paper_topic"]):
+    """Player sits down to write the paper"""
+    go_back_to_library(paper_topic)
+    import random
+    hours = random.randint(1, 5)
+    breaks = random.randint(1, 5)
+    print(f"The space is clean and quiet. While it does"
+          f" take a while, you bang out your paper in "
+          f"{hours} hours and take {breaks} breaks. The"
+          f"walk back feels glorious and the playlist "
+          f"in your headphones lifts your spirits.\n")
 
-def freeze_awkwardly():
-    """Player freezes awkwardly"""
-    print("Sparty looks confused. The awkward silence is deafening.\n")
-    print("He shrugs and walks away.\n")
+def go_back_to_library(paper_topic=game_state["paper_topic"]):
+    """Player refuses and goes back to study"""
+    print(f"You head back to the library to write paper on {paper_topic}. The fourth floor is pretty quiet and you find a space quite easily.\n")
 
 def stay_at_convention():
     """Player stays at convention after Otto's encouragement"""
@@ -29,7 +36,7 @@ def stay_at_convention():
 
 def leave_convention():
     """Player leaves convention"""
-    print("You head back to the library.\n")
+    print("You head back to the library to work on your paper. You don't finish it, but you make great progress!\n")
 
 def ignore_mascot():
     """Player ignores the mascot in the garden"""
@@ -86,7 +93,7 @@ sparty_response_to_paper = dialogue_node(
 )
 
 sparty_response_to_excitement = dialogue_node(
-    "He gives you an aggressive thumbs up, '-.'\n",
+    "He gives you an aggressive thumbs up, '-.'",
     {
         ("1", "one"): (
             "'I know, I'll get my paper done later.'",
@@ -98,7 +105,43 @@ sparty_response_to_excitement = dialogue_node(
         ),
     }
 )
+blurt_2 = dialogue_node(
+"'Oh my gosh, I don't know why I did that. What you trying to tell me?' You say."
+)
+blurt = dialogue_node(
+    "'--'",
+    {
+        ("1", "one"): (
+            f"The mascot convention? Sparty, I'd love to"
+            f", but I have to write a paper on {game_state["paper_topic"]}. ",
+        )
+    }
+)
+taps = dialogue_node(
+    "He turns around, giving you his full attention.",
+    {
+        ("1", "one"): (
+            "'Sorry' You blurt, 'I didn't know what to say."
+            "Of course I would go to the convention for you, Sparty!'",
+                       blurt),
+        ("2", "two"): (
+            "You pull your hand back like you've been burned. "
+            "'Oh my gosh, I don't know why I did that. What you trying to tell me?",
+            blurt_2
 
+        )
+    }
+)
+freeze_awkwardly= dialogue_node(
+    "The awkward silence is deafening.\n He shrugs and walks away.\n",
+    {
+        ("1", "one"): (
+        "You find a table on the fourth floor.",
+        write_paper()),
+    ("2", "two"): (
+        "You rush after him, tapping him on the shoulder",
+                   taps)}
+)
 sparty_start = dialogue_node(
     "Sparty taps the flyer aggressively and points to himself.\nWhat do you say?",
     {
@@ -142,6 +185,12 @@ otto_response_to_no = dialogue_node(
             "'Otto, I really have to go work on my paper. It's pretty important.'",
             leave_convention
         ),
+        ("3", "three"): (
+            "'Maybe I should stick around.' Seeing "
+            "everyone else here is making you more"
+            " excited by the second. 'What is there to do around here?'",
+            otto_ask_activities
+        )
     }
 )
 
@@ -169,8 +218,8 @@ otto_start = dialogue_node(
 brutus_start = dialogue_node(
     "'Hi, I'm Brutus. I'll be taking care of you today. What can I get you?'\n",
     {
-        ("1", "one"): ("'.'", None),
-        ("2", "two"): ("'.'", None),
+        ("1", "one"): ("'Can I get a water?'", None),
+        ("2", "two"): ("'I'd like a pop, please.'", None),
         ("3", "three"): ("'.'", None),
     }
 )

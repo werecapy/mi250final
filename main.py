@@ -4,7 +4,7 @@ Add this to the TOP of your main.py, before anything else
 """
 
 from validation import run_all_validations, print_validation_results
-
+from display import
 # Run silent validation first
 print("Initializing game...", end=" ", flush=True)
 validation_errors = run_all_validations(verbose=False)
@@ -26,17 +26,19 @@ pronouns_nonbinary = ["they", "them", "theirs"]
 
 
 def quit_program(prompt):
-    answer = input(prompt).lower()
-    if answer == "quit":
+    #Allows player to quit program
+    choice = input(prompt).lower()
+    if choice == "quit":
         if input("Are you sure? (yes/no) ").lower() == "yes":
             print("\nGoodbye!")
-            exit()
+            thanks()
         else:
             return quit_program(prompt)
-    return answer
+    return choice
 
 
 def greet():
+    #Starts game, greets player, and asks for info
     print("="*50)
     print("Welcome to Mascot Dating Simulator!\n")
     print("=" * 50)
@@ -109,6 +111,12 @@ def intro():
         else:
             print("What? Sorry, I didn't get that.")
 
+def thanks():
+
+    print("Thanks for playing!")
+    time.sleep(9)
+    return
+
 
 if __name__ == "__main__":
     user_name, user_input_gender_save, user_gender, user_age = greet()
@@ -118,3 +126,4 @@ if __name__ == "__main__":
     set_player_data(user_name, user_input_gender_save, user_gender, user_age)
 
     intro()
+    thanks()

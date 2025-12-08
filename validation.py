@@ -21,6 +21,9 @@ def validate_imports():
         ("locations", "from locations import union, walk_through_greenspace1, down_riv, breslin"),
         ("player_choice_functions", "from player_choice_functions import player_combo, paper_topic_choice"),
 
+
+
+
     ]
 
     for module_name, import_statement in modules_to_check:
@@ -69,6 +72,8 @@ def validate_functions():
     from locations import union, walk_through_greenspace1, library, down_riv, breslin, walk_through_greenspace2, sit_in_beal,eating_contest_watch, mascot_cafe, mascot_panels, sticker_booth,eating_contest,artist_alley,meet_n_greets
     from player_choice_functions import player_combo, paper_topic_choice, eat_riv,get_choice
     from game_state import set_player_data, set_paper_topic,add_to_backpack,purchase_meal,purchase_combo,add_stickers,get_game_state
+    from dialogues import go_to_convention,go_back_to_library,write_paper,stay_at_convention,leave_convention,ignore_mascot,talk_to_mascot,take_brochure
+    from main import greet,quit_program, save, intro, thanks
     functions = [
         ("union", union),
         ("walk_through_greenspace1", walk_through_greenspace1),
@@ -95,6 +100,21 @@ def validate_functions():
         ("sit_in_beal", sit_in_beal),
         ("eating_contest_watch", eating_contest_watch),
         ("get_choice",get_choice) ,
+        ("go_to_convention", go_to_convention) ,
+        ("go_back_to_library", go_back_to_library) ,
+        ("write_paper", write_paper) ,
+        ("stay_at_convention", stay_at_convention) ,
+        ("leave_convention", leave_convention) ,
+        ("ignore_mascot",ignore_mascot) ,
+        ("talk_to_mascot",talk_to_mascot) ,
+        ("take_brochure", take_brochure) ,
+        ("greet",greet) ,
+        ("quit_program", quit_program) ,
+        ("save",save) ,
+        ("intro",intro) ,
+        ("thanks",thanks) ,
+
+
 
     ]
 
