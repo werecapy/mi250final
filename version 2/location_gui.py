@@ -67,18 +67,18 @@ def walk_through_greenspace2_gui(gui):
           "to eat your combo, you notiv")
 
 
-def library_gui():
+def library_gui(gui):
     """Meet Sparty at the library"""
     game_state["meet_sparty"] = True #Saves whether player has met Sparty or not
-    print("Walking through the green space, you finally get to the front of the library. "
+    gui.display_text("Walking through the green space, you finally get to the front of the library. "
           "An interesting flyer catches your attention on the way to your usual study spot.\n")
 
     input("Press enter to continue...\n")
-    print("That was... interesting?\n"
+    gui.display_text("That was... interesting?\n"
           "You feel a presence behind you.")
 
     time.sleep(2)
-    print("..... Sparty!\n"
+    gui.display_text("..... Sparty!\n"
           "He stands there, hands on his hips, face close to yours.\n"
           "Then he starts aggressively tapping the flyer and then pointing to himself.\n"
           "Oh! He's asking if you're going to the convention.\n")
@@ -87,40 +87,40 @@ def library_gui():
     player_sparty_ch_1()
 
 
-def down_riv_gui():
+def down_riv_gui(gui):
     """Down the river location - restaurants"""
-    print("There are a TON of cars, even though it's usually not this busy!\n"
+    gui.display_text("There are a TON of cars, even though it's usually not this busy!\n"
           "Even the sign trucks are slowly crawling amongst the crowd of vehicles.\n")
 
     if game_state["meal_purchased"]:
         meal_name = game_state["meal_name"] #Saves whether the player has had a combo or not
-        print(f"You're carrying your {meal_name}.\n") #inserts the type of combo
+        gui.display_text(f"You're carrying your {meal_name}.\n") #inserts the type of combo
     else:
         eat_riv()
 
 
-def breslin_gui():
+def breslin_gui(gui):
     """Meet Otto at Breslin - enter convention"""
     game_state["meet_otto"] = True #Saves whether the player has met Otto or not
     minutes = random.randint(5, 15) #Minute chooser variable
 
-    print("There's so many people here!\n"
+    gui.display_text("There's so many people here!\n"
           f"It takes about {minutes} minutes to get in.\n" #Chooses how long the player has been standing in line
           "Inside, there's more people than you could have imagined.\n"
           "But it's not just people...")
 
     time.sleep(2)
-    print("There are plenty of mascots, as to be expected. "
+    gui.display_text("There are plenty of mascots, as to be expected. "
           "Walking around, you see a giant orange ball. It comes up to you and introduces itself.\n")
 
     # Call Otto's dialogue
     player_otto_ch_1()
 
 
-def mascot_cafe_gui():
+def mascot_cafe_gui(gui):
     """Meet Brutus at the mascot cafe"""
     game_state["meet_brutus"] = True #Saves whether player has met Brutus or not
-    print("Wandering over to the mascot cafe, it looks just as busy "
+    gui.display_text("Wandering over to the mascot cafe, it looks just as busy "
           "as the rest of the convention. People are sitting at tables and being "
           "waited on by mascots that you don't know.\n"
           "Upon sitting down, a mascot comes up to you.\n")
@@ -129,36 +129,36 @@ def mascot_cafe_gui():
     player_brutus_ch_1()
 
 
-def eating_contest_gui():
-    print("When you get to the stall you can't help but notice CONTINUE")
+def eating_contest_gui(gui):
+    gui.display_text("When you get to the stall you can't help but notice CONTINUE")
 
 
-def eating_contest_watch_gui():
+def eating_contest_watch_gui(gui):
     pass
 
 
 
-def sticker_booth_gui():
+def sticker_booth_gui(gui):
     """Sticker booth at artist alley"""
-    print("A few dozen boxes of stickers lay before you on the vendor's table.\n")
+    gui.display_text("A few dozen boxes of stickers lay before you on the vendor's table.\n")
 
     if game_state['meet_otto'] is True:
-        print("You recognize Sparty and Otto stickers, plus many others!\n")
+        gui.display_text("You recognize Sparty and Otto stickers, plus many others!\n")
     elif game_state['meet_otto'] and  game_state['meet_tereesa'] is True :
-        print("You see Sparty, Otto, and Tereesa among all the stickers.")
+        gui.display_text("You see Sparty, Otto, and Tereesa among all the stickers.")
 
     else:
-        print("You recognize Sparty stickers and many others!\n")
+        gui.display_text("You recognize Sparty stickers and many others!\n")
 
     choice = input("Would you like to buy a sticker? Type 'yes' or 'no'\n> ").lower()
     if choice in ("yes", "y"):
         game_state["get_stickers"] = True
-        print("You got some awesome stickers!\n")
+        gui.display_text("You got some awesome stickers!\n")
 
 
-def artist_alley_gui():
+def artist_alley_gui(gui):
     """Artist alley at convention"""
-    print("Wow! There's so much good art here! Vendors have traveled here from all over "
+    gui.display_text("Wow! There's so much good art here! Vendors have traveled here from all over "
           "with their own mascots. Some of the mascots are ones you've never seen before.\n")
 
     choice = input("The sticker booth on your left seems promising, do you want to check it out? "
@@ -170,14 +170,14 @@ def artist_alley_gui():
         print("You continue browsing the art.\n")
 
 
-def mascot_panels_gui():
+def mascot_panels_gui(gui):
     """Mascot panels at convention"""
-    print("You find the panel discussion. Mascots are talking about their experiences.\n")
+    gui.display_text("You find the panel discussion. Mascots are talking about their experiences.\n")
 
 
-def meet_n_greets_gui():
+def meet_n_greets_gui(gui):
     """Meet & greets at convention"""
-    print("Looking across the room, you observe the many different mascots waiting to meet you!\n")
+    gui.display_text("Looking across the room, you observe the many different mascots waiting to meet you!\n")
 
 if __name__ == "__main__":
     gui = GameGUI()

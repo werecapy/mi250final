@@ -79,7 +79,7 @@ def player_combo_gui(gui, after_callback):
         "No": on_no
     })
 
-def river_restaurant():
+def river_restaurant(gui, after_callback):
     """Restaurant choice on Grand River"""
     restaurant_options = {
         "1": ("royal beef bulgogi bento", "kimchi_box"),
