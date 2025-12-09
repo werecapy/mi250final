@@ -40,6 +40,33 @@ def quit_program(prompt):
     return choice
 
 
+
+def intro():
+    print(
+        "It's a wonderful, sunny day and you have decided to take a walk around campus before going to the library to study.\n"
+        "The 1 bus is strangely full...\n"
+        "You get off the bus at Abbot and GR...\n")
+
+    while True:
+        choice = input("Do you want to go to the Union?\nType 'yes' or 'no'.\n> ").lower()
+        if choice in ("yes", "y"):
+            union()
+            break
+        elif choice in ("no", "n"):
+            print("What would you like to do?"
+                  "\n1. Go through the greenspace."
+                  "\n2. Go down Grand River.")
+            choice = input("\nType 1 or 2.\n> ").strip()
+            if choice == "1":
+                walk_through_greenspace1()
+                break
+            elif choice == "2":
+                down_riv()
+                break
+            else:
+                print("What? Sorry, I didn't get that.")
+        else:
+            print("What? Sorry, I didn't get that.")
 def greet():
     #Starts game, greets player, and asks for info
 
@@ -88,33 +115,6 @@ def save(user_name, user_input_gender_save, user_gender, user_age):
 
     print(f"User inputs saved to {full_path}!")
 
-
-def intro():
-    print(
-        "It's a wonderful, sunny day and you have decided to take a walk around campus before going to the library to study.\n"
-        "The 1 bus is strangely full...\n"
-        "You get off the bus at Abbot and GR...\n")
-
-    while True:
-        choice = input("Do you want to go to the Union?\nType 'yes' or 'no'.\n> ").lower()
-        if choice in ("yes", "y"):
-            union()
-            break
-        elif choice in ("no", "n"):
-            print("What would you like to do?"
-                  "\n1. Go through the greenspace."
-                  "\n2. Go down Grand River.")
-            choice = input("\nType 1 or 2.\n> ").strip()
-            if choice == "1":
-                walk_through_greenspace1()
-                break
-            elif choice == "2":
-                down_riv()
-                break
-            else:
-                print("What? Sorry, I didn't get that.")
-        else:
-            print("What? Sorry, I didn't get that.")
 
 def thanks():
 

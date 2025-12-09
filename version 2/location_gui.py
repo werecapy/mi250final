@@ -23,16 +23,16 @@ from dialogues import (
 )
 def union_gui(gui):
     """Union location - buy combos"""
-    print("The union is as busy as ever!\n"
+    gui.display_text("The union is as busy as ever!\n"
           "Every table has at least one student sitting at it. "
           "\n")
 
     if not game_state["combo_purchase"]:
-        print("Passing through the Sparty's, you think about getting a combo.\n")
+        gui.display_text("Passing through the Sparty's, you think about getting a combo.\n")
         player_combo()
     if game_state["combo_purchase"] == True:
-        print("As fun as getting another combo would be, you have to wait 15 minutes.\n")
-    print("You continue through the union...\n")
+        gui.display_text("As fun as getting another combo would be, you have to wait 15 minutes.\n")
+    gui.display_text("You continue through the union...\n")
     choice = input("What do you want to do next?\n"
                    "    1. Walk to the library\n"
                    "    2. Eat your combo.\n> ").strip().lower()
@@ -43,7 +43,7 @@ def union_gui(gui):
         if game_state["combo_purchase"]:
             sit_in_beal()
         else:
-            print("You silly goose, you never bought a combo! Would you like to?\n")
+            gui.display_text("You silly goose, you never bought a combo! Would you like to?\n")
             choice = input("Enter 'yes' or 'no':\n> ").lower()
             if choice in ("yes", "y"):
                 player_combo(gui)
@@ -51,7 +51,7 @@ def union_gui(gui):
 
 def walk_through_greenspace1_gui(gui):
     """Walk to library through greenspace"""
-    print("Wow, it *really* is a great day! There's a perfect amount of cloud cover "
+    gui.display_text("Wow, it *really* is a great day! There's a perfect amount of cloud cover "
           "and a light enough breeze to not feel too chilly. The green space is indeed green! "
           "Squirrels are bounding about, living their best furry lives. You get jealous of them "
           "because you think about the 10 page paper you have to complete before next week about... "
@@ -61,9 +61,9 @@ def walk_through_greenspace1_gui(gui):
     input("Press enter to continue...\n")
     library_gui(gui)
 
-def walk_through_greenspace2_gui():
+def walk_through_greenspace2_gui(gui):
     """Second green space sequence"""
-    print("The sun is not quitting and neither are you! As you walk to the nearest bench"
+    gui.display_text("The sun is not quitting and neither are you! As you walk to the nearest bench"
           "to eat your combo, you notiv")
 
 
