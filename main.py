@@ -69,6 +69,7 @@ def greet():
 
     print(f"So your name is {user_name}, your gender is {user_input_gender_save}, and you are {user_age} years old.")
     input("Press enter to continue...")
+    intro()
 
     return user_name, user_input_gender_save, user_gender, user_age
 
