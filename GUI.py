@@ -2,6 +2,8 @@ from tkinter import Tk, Label, Button, Frame, Entry, StringVar, Radiobutton, mes
 import tkinter as tk
 
 
+
+
 class GameGUI:
     def __init__(self):
         self.root = Tk()
@@ -125,25 +127,24 @@ class GameGUI:
                bg="green", fg="white", font=("Calibri", 12),
                width=15, height=2).pack(pady=10)
 
-    def start_game(self):
-        """Start the actual game"""
-        self.clear_window()
+    def intro_gui(gui):
+        gui.display_text(
+            "It's a wonderful, sunny day and you have decided to take a walk "
+            "around campus before going to the library to study.\n"
+            "The 1 bus is strangely full...\n"
+            "You get off the bus at Abbot and GR...\n"
+        )
 
-        # Here you would show your first game scene
-        Label(self.root, text=f"Welcome, {self.player_data['name']}!",
-              font=("Calibri", 16, "bold")).pack(pady=30)
+        gui.display_text("Do you want to go to the Union?")
+        gui.show_choices({
+            "Yes, go to the Union": lambda: union_gui(gui),
+            "No, go through the greenspace": lambda: walk_through_greenspace1_gui(gui),
+            "No, go down Grand River": lambda: down_riv_gui(gui)
+        })
 
-        Label(self.root, text="The game would continue here...",
-              font=("Calibri", 12)).pack(pady=20)
 
-        # Example choice
-        Button(self.root, text="Go to Union",
-               command=lambda: self.show_scene("union"),
-               bg="lightblue", font=("Calibri", 11)).pack(pady=5)
 
-        Button(self.root, text="Go to Greenspace",
-               command=lambda: self.show_scene("greenspace"),
-               bg="lightgreen", font=("Calibri", 11)).pack(pady=5)
+
 
 
 

@@ -8,54 +8,54 @@ from game_state import game_state
 # ============ CALLBACK FUNCTIONS ============
 # These are called when dialogue ends
 
-def go_to_convention():
+def go_to_convention(gui):
     """Player agrees to go to convention"""
-    print("You head off to the mascot convention!\n")
+    gui.display_text("You head off to the mascot convention!\n")
     from locations import breslin
-    breslin()
+    breslin(gui)
 
-def write_paper(paper_topic=game_state["paper_topic"]):
+def write_paper(gui,paper_topic=game_state["paper_topic"]):
     """Player sits down to write the paper"""
     go_back_to_library(paper_topic)
     import random
     hours = random.randint(1, 5)
     breaks = random.randint(1, 5)
-    print(f"The space is clean and quiet. While it does"
+    gui.display_text(f"The space is clean and quiet. While it does"
           f" take a while, you bang out your paper in "
           f"{hours} hours and take {breaks} breaks. The"
           f"walk back feels glorious and the playlist "
           f"in your headphones lifts your spirits.\n")
 
-def go_back_to_library(paper_topic=game_state["paper_topic"]):
+def go_back_to_library(gui,paper_topic=game_state["paper_topic"]):
     """Player refuses and goes back to study"""
-    print(f"You head back to the library to write paper on {paper_topic}. The fourth floor is pretty quiet and you find a space quite easily.\n")
+    gui.display_text(f"You head back to the library to write paper on {paper_topic}. The fourth floor is pretty quiet and you find a space quite easily.\n")
     choice = input("Would you like to see if the convention is still going on? Type 'yes' or 'no'.\n")
     if choice == 'yes':
 
-        print("Miraculously, the convention is still going on! You can't believe your luck.")
-        go_to_convention()
+        gui.display_text("Miraculously, the convention is still going on! You can't believe your luck.")
+        go_to_convention(gui)
     else:
-        print("You head back to your apartment after a long homework session. It wasn't fun, but you got all of your homework done for the next two weeks!"
+        gui.display_text("You head back to your apartment after a long homework session. It wasn't fun, but you got all of your homework done for the next two weeks!"
               "You treat yourself to some takeout and call it a night.")
-def stay_at_convention():
+def stay_at_convention(gui):
     """Player stays at convention after Otto's encouragement"""
-    print("You decide to stick around and explore more.\n")
+    gui.display_text("You decide to stick around and explore more.\n")
 
-def leave_convention():
+def leave_convention(gui):
     """Player leaves convention"""
-    print("You head back to the library to work on your paper. You don't finish it, but you make great progress!\n")
+    gui.display_text("You head back to the library to work on your paper. You don't finish it, but you make great progress!\n")
 
-def ignore_mascot():
+def ignore_mascot(gui):
     """Player ignores the mascot in the garden"""
-    print("You pretend the mascot doesn't exist.\n")
-    print("It sighs and slowly walks away.\n")
+    gui.display_text("You pretend the mascot doesn't exist.\n")
+    gui.display_text("It sighs and slowly walks away.\n")
 
-def talk_to_mascot():
+def talk_to_mascot(gui):
     """Player talks to mascot"""
-    print("The mascot seems pleased!\n")
+    gui.display_text("The mascot seems pleased!\n")
     game_state['meet_tereesa'] = True
 
-def take_brochure():
+def take_brochure(gui):
     pass
     #this will have to connect back to player choices or something because the
     # brochure needs to go in the backpack
@@ -64,21 +64,21 @@ def take_brochure():
 
 # ============ WRAPPER FUNCTIONS ============
 #These functions belong here, but are imported to other places
-def player_sparty_ch_1():
+def player_sparty_ch_1(gui):
     """Called from library()"""
-    sparty_start.display()
+    sparty_start.display(gui)
 
-def player_otto_ch_1():
+def player_otto_ch_1(gui):
     """Called from breslin()"""
-    otto_start.display()
+    otto_start.display(gui)
 
-def player_brutus_ch_1():
+def player_brutus_ch_1(gui):
     """Called from mascot_cafe()"""
-    brutus_start.display()
+    brutus_start.display(gui)
 
-def player_tereesa_ch_1():
+def player_tereesa_ch_1(gui):
     """Called from sit_in_beal()"""
-    tereesa_start.display()
+    tereesa_start.display(gui)
 
 # ============ SPARTY DIALOGUE TREE ============
 
