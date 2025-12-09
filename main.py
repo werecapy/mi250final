@@ -134,8 +134,10 @@ def thanks():
     return
 
 
-
+greet()
+thanks()
 if __name__ == "__main__":
+
 
     """
     user_name, user_input_gender_save, user_gender, user_age = greet()
