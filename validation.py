@@ -73,7 +73,7 @@ def validate_functions():
     from player_choice_functions import player_combo, paper_topic_choice, eat_riv,get_choice
     from game_state import set_player_data, set_paper_topic,add_to_backpack,purchase_meal,purchase_combo,add_stickers,get_game_state
     from dialogues import go_to_convention,go_back_to_library,write_paper,stay_at_convention,leave_convention,ignore_mascot,talk_to_mascot,take_brochure
-    from main import greet,quit_program, save, intro, thanks
+
     functions = [
         ("union", union),
         ("walk_through_greenspace1", walk_through_greenspace1),
@@ -108,11 +108,7 @@ def validate_functions():
         ("ignore_mascot",ignore_mascot) ,
         ("talk_to_mascot",talk_to_mascot) ,
         ("take_brochure", take_brochure) ,
-        ("greet",greet) ,
-        ("quit_program", quit_program) ,
-        ("save",save) ,
-        ("intro",intro) ,
-        ("thanks",thanks) ,
+
 
 
 

@@ -1,6 +1,6 @@
-# ============ dialogues.py ============
-# COMPLETE DIALOGUE TREE - All converted to dialogue_node system
-# Imports only what's needed
+# ============ dialogues.py (FIXED) ============
+
+
 
 from dialogue import dialogue_node
 from game_state import game_state
@@ -10,7 +10,7 @@ from game_state import game_state
 
 def go_to_convention():
     """Player agrees to go to convention"""
-    print("You head off to the mascot convention with Sparty!\n")
+    print("You head off to the mascot convention!\n")
     from locations import breslin
     breslin()
 
@@ -29,7 +29,14 @@ def write_paper(paper_topic=game_state["paper_topic"]):
 def go_back_to_library(paper_topic=game_state["paper_topic"]):
     """Player refuses and goes back to study"""
     print(f"You head back to the library to write paper on {paper_topic}. The fourth floor is pretty quiet and you find a space quite easily.\n")
+    choice = input("Would you like to see if the convention is still going on? Type 'yes' or 'no'.\n")
+    if choice == 'yes':
 
+        print("Miraculously, the convention is still going on! You can't believe your luck.")
+        go_to_convention()
+    else:
+        print("You head back to your apartment after a long homework session. It wasn't fun, but you got all of your homework done for the next two weeks!"
+              "You treat yourself to some takeout and call it a night.")
 def stay_at_convention():
     """Player stays at convention after Otto's encouragement"""
     print("You decide to stick around and explore more.\n")
@@ -56,6 +63,7 @@ def take_brochure():
 
 
 # ============ WRAPPER FUNCTIONS ============
+#These functions belong here, but are imported to other places
 def player_sparty_ch_1():
     """Called from library()"""
     sparty_start.display()
@@ -105,43 +113,52 @@ sparty_response_to_excitement = dialogue_node(
         ),
     }
 )
+
 blurt_2 = dialogue_node(
-"'Oh my gosh, I don't know why I did that. What you trying to tell me?' You say."
+    "'Oh my gosh, I don't know why I did that. What you trying to tell me?' You say.",
+    {
+        ("1", "continue"): ("Press enter to continue...", None)
+    }
 )
+
 blurt = dialogue_node(
     "'--'",
     {
         ("1", "one"): (
-            f"The mascot convention? Sparty, I'd love to"
-            f", but I have to write a paper on {game_state["paper_topic"]}. ",
+            f"The mascot convention? Sparty, I'd love to, but I have to write a paper on {game_state['paper_topic']}.",
+            sparty_response_to_paper
         )
     }
 )
+
 taps = dialogue_node(
     "He turns around, giving you his full attention.",
     {
         ("1", "one"): (
-            "'Sorry' You blurt, 'I didn't know what to say."
-            "Of course I would go to the convention for you, Sparty!'",
-                       blurt),
+            "'Sorry' You blurt, 'I didn't know what to say. Of course I would go to the convention for you, Sparty!'",
+            blurt
+        ),
         ("2", "two"): (
-            "You pull your hand back like you've been burned. "
-            "'Oh my gosh, I don't know why I did that. What you trying to tell me?",
+            "You pull your hand back like you've been burned. 'Oh my gosh, I don't know why I did that. What you trying to tell me?'",
             blurt_2
-
         )
     }
 )
-freeze_awkwardly= dialogue_node(
-    "The awkward silence is deafening.\n He shrugs and walks away.\n",
+
+freeze_awkwardly = dialogue_node(
+    "The awkward silence is deafening.\nHe shrugs and walks away.\n",
     {
         ("1", "one"): (
-        "You find a table on the fourth floor.",
-        write_paper()),
-    ("2", "two"): (
-        "You rush after him, tapping him on the shoulder",
-                   taps)}
+            "You find a table on the fourth floor.",
+            write_paper
+        ),
+        ("2", "two"): (
+            "You rush after him, tapping him on the shoulder",
+            taps
+        )
+    }
 )
+
 sparty_start = dialogue_node(
     "Sparty taps the flyer aggressively and points to himself.\nWhat do you say?",
     {
@@ -186,9 +203,7 @@ otto_response_to_no = dialogue_node(
             leave_convention
         ),
         ("3", "three"): (
-            "'Maybe I should stick around.' Seeing "
-            "everyone else here is making you more"
-            " excited by the second. 'What is there to do around here?'",
+            "'Maybe I should stick around.' Seeing everyone else here is making you more excited by the second. 'What is there to do around here?'",
             otto_ask_activities
         )
     }
@@ -226,95 +241,109 @@ brutus_start = dialogue_node(
 
 
 # ============ TEREESA (GARDEN MASCOT) DIALOGUE TREE ============
+
 pamphlet = dialogue_node(
     "not finished, should show player pamphlet and let the player react to it.",
-    {("1", "one"): ("pass",None)
-
+    {
+        ("1", "one"): ("pass", None)
     }
 )
+
 redirect = dialogue_node(
     "'I'm supposed to give this to you,' she says while sliding a paper toward you on the bench.\n",
-    { ("1", "one"): (
-        "You're not thrilled someone is giving you a piece of paper. 'Thanks,' you say, taking the paper.",
-    ),
-        ('2','two'): (
-            "You take the paper, looking it over. It's for a mascot convention?", pamphlet
-        )}
+    {
+        ("1", "one"): (
+            "You're not thrilled someone is giving you a piece of paper. 'Thanks,' you say, taking the paper.",
+            None
+        ),
+        ("2", "two"): (
+            "You take the paper, looking it over. It's for a mascot convention?",
+            pamphlet
+        )
+    }
 )
+
 prune_yourself = dialogue_node(
     "'Wow... that can be surprisingly deep if you think about it long enough.'\n",
-    { ("1", "one"): (
-        "'Yeah, I guess it can. Anyway, was there a reason you were hiding?'",
-            None),
-    ("2", "two"): ("'Let's not get too deep into that, I need to go to the library.'",
-                   None),
-    ('3', 'three'): ("You both stare at each other for a minute before Tereesa breaks the silence.",redirect)
-
-
-
-
-},
+    {
+        ("1", "one"): (
+            "'Yeah, I guess it can. Anyway, was there a reason you were hiding?'",
+            None
+        ),
+        ("2", "two"): (
+            "'Let's not get too deep into that, I need to go to the library.'",
+            None
+        ),
+        ("3", "three"): (
+            "You both stare at each other for a minute before Tereesa breaks the silence.",
+            redirect
+        )
+    }
 )
 
 shuffling = dialogue_node(
     "'Ugh, I knew I should have pruned those extra branches!' She begins to try and tame the wildness.",
-{("1","one"):(
-        "'I think if you pruned branches, then you would look even more out of place.'",
-            None ),
-        ("2", "two"): (
-        "'You good amazing just the way you are, don't prune yourself to fit in.'",
-            prune_yourself)
- },
-
-
-)
-watched = dialogue_node(
-    "Well I suppose there's nothing I could have done about that\n",
-    {('1','one'):(
-    "'No, not really. Is there any reason you're trying to hide out in public?'",
-        pamphlet
-),
-    ("2", "two"): (
-        "'INSERT'",
-                  None
-                   ),
-
- }
-
-)
-gave_away = dialogue_node(
-    "What gave me away?\n",
-    {("1", "one"): (
-        "'You're not tall enough to be a real tree.' The mascot "
-                "doesn't look anything like the other trees around.",
-                    None),
-    ("2", "two"): (
-        "'I could hear you shuffling.'",
-                   shuffling
-                   ),
-     ("3", "three"): (
-         "I felt like I was being watched.",
-         watched
-     )
-
- }
-
-    )
-blew_cover = dialogue_node(
-    "So I blew my own cover again, that really sucks!",
-    {("1", "one"): (
-    '\'It\'s okay, you tried your best.\'',
-                None)
-    ,
-    ("2", "two"): ("'You were trying to be covert?'",
-                   None
-                   ),
-    ("3", "three"): (
-            "What are you doing?",
+    {
+        ("1", "one"): (
+            "'I think if you pruned branches, then you would look even more out of place.'",
             None
         ),
-}
-    )
+        ("2", "two"): (
+            "'You look amazing just the way you are, don't prune yourself to fit in.'",
+            prune_yourself
+        )
+    }
+)
+
+watched = dialogue_node(
+    "Well I suppose there's nothing I could have done about that\n",
+    {
+        ("1", "one"): (
+            "'No, not really. Is there any reason you're trying to hide out in public?'",
+            pamphlet
+        ),
+        ("2", "two"): (
+            "'INSERT'",
+            None
+        )
+    }
+)
+
+gave_away = dialogue_node(
+    "What gave me away?\n",
+    {
+        ("1", "one"): (
+            "'You're not tall enough to be a real tree.' The mascot doesn't look anything like the other trees around.",
+            None
+        ),
+        ("2", "two"): (
+            "'I could hear you shuffling.'",
+            shuffling
+        ),
+        ("3", "three"): (
+            "I felt like I was being watched.",
+            watched
+        )
+    }
+)
+
+blew_cover = dialogue_node(
+    "So I blew my own cover again, that really sucks!",
+    {
+        ("1", "one"): (
+            "'It's okay, you tried your best.'",
+            None
+        ),
+        ("2", "two"): (
+            "'You were trying to be covert?'",
+            None
+        ),
+        ("3", "three"): (
+            "What are you doing?",
+            None
+        )
+    }
+)
 
 tereesa_start = dialogue_node(
     "It jumps back in surprise! 'Darn it! You noticed me!'\n",
@@ -333,5 +362,4 @@ tereesa_start = dialogue_node(
         ),
     }
 )
-
 
