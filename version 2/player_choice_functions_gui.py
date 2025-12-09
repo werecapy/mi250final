@@ -21,19 +21,23 @@ def get_choice(options):
         return int(choice)
     print(f"Please enter a number between 1 and {len(options)}")
 
-def paper_topic_choice():
+def paper_topic_choice(gui,after_callback):
     """Players have the random chance of getting to pick their own paper topic."""
     if random.random() < 0.5:
-        #Player chooses their own topic
-        paper_topic_entry=Entry(gui,text="What do you want your paper to be on?")
-        new_topic = input("What is your paper on?\n>")#The actual choice players will make
-        paper_topic_list.append(new_topic)
-        game_state["paper_topic"] = new_topic
+        # Player chooses their own topic
+        gui.display_text("What is your paper on?")
+        def on_topic_entered(new_topic):
+            paper_topic_list.append(new_topic)
+
+            game_state["paper_topic"] = new_topic
+            gui.display_text(f"A paper on {new_topic}? Interesting choice!\n")
+            after_callback(gui)
     else:
-        #Paper topic is assigned
+        # Paper topic is assigned
         topic = random.choice(paper_topic_list)
         game_state["paper_topic"] = topic
-        print(f"Oh, that's right! It was {topic}!")
+        gui.display_text(f"Oh, that's right! It was {topic}!\n")
+        after_callback(gui)
 
 
 def player_combo_gui(gui, after_callback):
