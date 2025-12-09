@@ -1,54 +1,44 @@
-# ============ dialogue.py (FIXED) ============
-from GUI import GameGUI
-
-
 class dialogue_node:
     def __init__(self, text, options, on_enter=None):
         """
         text: The prompt to show the player
         options: Dict of {choice_keys: (response_text, next_node)}
-
-
-
         on_enter: Goes to next dialogue node or to a function, if nothing is
         given, the program will end
         """
         self.text = text
         self.options = options
         self.on_enter = on_enter
-    #Displays dialogue node
-    def display(self,gui):
-        """Show this dialogue node"""
+
+    def display(self, gui):
+        """Show this dialogue node in GUI"""
         if self.on_enter:
             self.on_enter()
 
-        prompt = self.text + "\n"
-        for i, (choice_keys, (response, _)) in enumerate(self.options.items(), 1):
-            prompt += f"    {i}. {response}\n" #Choice enumeration for display
-        prompt += "> "
+        # Display the main dialogue text
+        gui.display_text(self.text)
 
-        choice = input(prompt).strip().lower() #actual choice
-        #Displays possible options from dialogue node class and figures
-        #whether there is a self.on_enter
-        for choice_keys, (response, next_node) in self.options.items():
-            if choice in choice_keys or str(len(choice_keys)) in choice:
-                gui.display_text(response + "\n")
+        # Convert options to GUI button choices
+        choices = {}
+        for i, (choice_keys, (response_text, next_node)) in enumerate(self.options.items(), 1):
+            # Create a callback for each choice
+            def make_callback(response, next_n):
+                def callback():
+                    gui.display_text(f"\n{response}\n")
 
-                if next_node is None:
-                    return
-                elif isinstance(next_node, dialogue_node):
-                    #Calls next dialogue node if it exists
-                    next_node.display()
-                elif callable(next_node):
-                    #Calls if a function is called
-                    next_node()
+                    if next_n is None:
+                        return  # End of dialogue
+                    elif isinstance(next_n, dialogue_node):
+                        # Call next dialogue node
+                        next_n.display(gui)
+                    elif callable(next_n):
+                        # Call function (make sure it accepts gui)
+                        next_n(gui)
 
-                return
+                return callback
 
-        gui.display_text("Sorry, I don't understand that.\n") #Calls if the player does something unexpected
-        self.display()
+            # Add button with numbered label
+            choices[f"{i}. {response_text}"] = make_callback(response_text, next_node)
 
-if __name__ == "__main__":
-    gui = GameGUI()
-
-    gui.run()
+        # Show all choices as buttons
+        gui.show_choices(choices)
