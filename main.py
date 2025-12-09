@@ -4,22 +4,10 @@ from validation import run_all_validations, print_validation_results
 
 from tkinter import *
 import sys
-#--------Display functions-----
-def clear_window():
-    """Destroy all widgets in the window"""
-    for widget in myroot.winfo_children():
-        widget.destroy()
 
 
 
-myroot = Tk()
-myroot.title("Mascot Dating Simulator")
-myroot.resizable(False, False)
-myroot.geometry("400x400")
-game_label = Label(myroot, text="Welcome to Mascot Dating Simulator!",font=("Calibri",15)).pack()
-start_button = Button(myroot ,fg="Green", bg="Green", text="Start", command=greet).pack()
-quit_button = Button(myroot,fg="Red",bg="Red", text="Quit", command=quit).pack()
-myroot.mainloop()
+
 # Run silent validation first
 print("Initializing game...", end=" ", flush=True)
 validation_errors = run_all_validations(verbose=False)
@@ -139,13 +127,12 @@ thanks()
 if __name__ == "__main__":
 
 
-    """
     user_name, user_input_gender_save, user_gender, user_age = greet()
     save(user_name, user_input_gender_save, user_gender, user_age)
 
     # Store player data in shared state
     set_player_data(user_name, user_input_gender_save, user_gender, user_age)
-"""
+
 
 
 
