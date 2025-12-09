@@ -150,7 +150,7 @@ def thanks():
 
 if __name__ == "__main__":
     gui = GameGUI()
-    greet_gui(gui)
+
     gui.run()
 
     """

@@ -145,22 +145,8 @@ class GameGUI:
                command=lambda: self.show_scene("greenspace"),
                bg="lightgreen", font=("Calibri", 11)).pack(pady=5)
 
-    def show_scene(self, scene_name):
-        import locations
 
-        """Example method to show different scenes"""
-        self.clear_window()
 
-        scenes = {
-            union: "You're at the Union. It's busy with students.",
-            : "You're in the greenspace. It's peaceful."
-        }
-
-        Label(self.root, text=scenes.get(scene_name, "Unknown location"),
-              font=("Calibri", 12), wraplength=400).pack(pady=50)
-
-        Button(self.root, text="Back", command=self.start_game,
-               bg="gray", fg="white").pack(pady=20)
 
     def run(self):
         """Start the application"""

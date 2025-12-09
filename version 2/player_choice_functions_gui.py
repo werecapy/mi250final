@@ -7,6 +7,7 @@ from tkinter import Entry
 from GUI import GameGUI
 from game_state import game_state, purchase_combo, purchase_meal
 
+
 paper_topic_list = ['sleep disorders', 'nuclear power',
                     "social media interaction", 'book bans']
 
@@ -79,45 +80,35 @@ def player_combo_gui(gui, after_callback):
         "No": on_no
     })
 
-def river_restaurant(gui, after_callback):
+
+def river_restaurant_gui(gui, after_callback):
     """Restaurant choice on Grand River"""
-    restaurant_options = {
-        "1": ("royal beef bulgogi bento", "kimchi_box"),
-        "2": ("orange power bowl", "playa_bowl"),
-        "3": ("caniac combo", "raisin_canes"),
-        "4": ("double cheeseburger with a small fry", "five_guys"),
-        "5": ("10 traditional wings with buffalo sauce", "dwc"),
-        "6": (None, "union"),
-    }
+    gui.display_text("Which restaurant do you want to go to?\n")
 
-    for attempt in range(5):
-        restaurant_choice = input(
-            "What are you going to choose?\n"
-            "  1. Kimchi Box\n"
-            "  2. Playa Bowl\n"
-            "  3. Raisin' Canes\n"
-            "  4. Five Guys\n"
-            "  5. Detroit Wing Company\n"
-            "  6. Walk back to the Union\n> "
-        ).strip().lower()
+    def select_restaurant(meal_text, restaurant_id):
+        gui.display_text(f"There are so many great choices on this menu, it's hard to pick just one!")
+        gui.display_text(f"You end up picking {meal_text}.\n")
+        purchase_meal(restaurant_id, meal_text)
+        after_callback(gui)
 
-        if restaurant_choice in restaurant_options:
-            meal_text, restaurant_id = restaurant_options[restaurant_choice]
+    def go_back_to_union():
+        gui.display_text("The walk back to the Union is pleasant.\n")
+        from location_gui import union_gui
+        union_gui(gui)
 
-            if restaurant_id == "union":
-                from locations import union
-                print("The walk back to the Union is pleasant.\n")
-                union()
-                return
-            else:
-                print(f"There are so many great choices on this menu, it's hard to pick just one!\n"
-                      f"You end up picking {meal_text}.\n")
-                purchase_meal(restaurant_id, meal_text)
-                return
-        else:
-            print("Sorry, I don't understand that. Try again.\n")
+    def skip_eating():
+        gui.display_text("You decide not to eat after all.\n")
+        after_callback(gui)
 
-    print("You couldn't decide and left the restaurant.")
+    gui.show_choices({
+        "Kimchi Box": lambda: select_restaurant("royal beef bulgogi bento", "kimchi_box"),
+        "Playa Bowl": lambda: select_restaurant("orange power bowl", "playa_bowl"),
+        "Raisin' Canes": lambda: select_restaurant("caniac combo", "raisin_canes"),
+        "Five Guys": lambda: select_restaurant("double cheeseburger with a small fry", "five_guys"),
+        "Detroit Wing Company": lambda: select_restaurant("10 traditional wings with buffalo sauce", "dwc"),
+        "Walk back to the Union": go_back_to_union,
+        "Never mind": skip_eating
+    })
 
 
 def eat_riv():
@@ -125,28 +116,28 @@ def eat_riv():
     choice = input("Are you in the mood to eat? Type 'yes' or 'no'\n> ").lower()
     if choice in ("yes", "y"):
         print("You think about the wonderful restaurants along Grand River.\n")
-        river_restaurant()
+        river_restaurant_gui()
     else:
         print("You decide not to eat and continue on.\n")
 
 
-def sit_in_beal():
+def sit_in_beal(gui):
     """Eat a meal in Beal Garden - meet Tereesa"""
     game_state["sit_in_beal"] = True
 
     combo_type = game_state.get("combo_type")
     #Logic for each of the different combos
     if combo_type == "woody_combo":
-        print("Sitting in a secluded part of the garden, you feast on your delicious "
+        gui.display_text("Sitting in a secluded part of the garden, you feast on your delicious "
               "Woody's burrito...\n")
     elif combo_type == "ramen_combo":
-        print("Well, you didn't think that through. The noodles are raw...\n")
+        gui.display_text("Well, you didn't think that through. The noodles are raw...\n")
     elif combo_type == "protein_combo":
-        print("It might not be glamorous, but it works...\n")
+        gui.display_text("It might not be glamorous, but it works...\n")
 
     time.sleep(2)
-    print("You notice the tree next to you isn't really a tree at all!\n")
-    print("It's a mascot!\n")
+    gui.display_text("You notice the tree next to you isn't really a tree at all!\n")
+    gui.display_text("It's a mascot!\n")
 
     # Import here to avoid circular import
     from dialogues import player_tereesa_ch_1
