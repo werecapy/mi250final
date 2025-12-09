@@ -84,7 +84,7 @@ def library_gui(gui):
           "Oh! He's asking if you're going to the convention.\n")
 
     # Call the dialogue
-    player_sparty_ch_1()
+    player_sparty_ch_1(gui)
 
 
 def down_riv_gui(gui):
@@ -96,7 +96,7 @@ def down_riv_gui(gui):
         meal_name = game_state["meal_name"] #Saves whether the player has had a combo or not
         gui.display_text(f"You're carrying your {meal_name}.\n") #inserts the type of combo
     else:
-        eat_riv()
+        eat_riv(gui)
 
 
 def breslin_gui(gui):
@@ -114,7 +114,7 @@ def breslin_gui(gui):
           "Walking around, you see a giant orange ball. It comes up to you and introduces itself.\n")
 
     # Call Otto's dialogue
-    player_otto_ch_1()
+    player_otto_ch_1(gui)
 
 
 def mascot_cafe_gui(gui):
@@ -126,7 +126,7 @@ def mascot_cafe_gui(gui):
           "Upon sitting down, a mascot comes up to you.\n")
 
     # Call Brutus's dialogue
-    player_brutus_ch_1()
+    player_brutus_ch_1(gui)
 
 
 def eating_contest_gui(gui):
@@ -165,7 +165,7 @@ def artist_alley_gui(gui):
                    "Type 'yes' or 'no'\n> ").lower()
 
     if choice in ("yes", "y"):
-        sticker_booth_gui()
+        sticker_booth_gui(gui)
     else:
         print("You continue browsing the art.\n")
 
