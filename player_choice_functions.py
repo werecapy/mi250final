@@ -111,6 +111,7 @@ def river_restaurant():
                 print(f"There are so many great choices on this menu, it's hard to pick just one!\n"
                       f"You end up picking {meal_text}.\n")
                 purchase_meal(restaurant_id, meal_text)
+                game_state["meal_name"] = meal_text
                 return
         else:
             print("Sorry, I don't understand that. Try again.\n")
