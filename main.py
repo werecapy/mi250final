@@ -2,8 +2,6 @@
 
 from validation import run_all_validations, print_validation_results
 
-from tkinter import *
-import sys
 
 
 
@@ -21,7 +19,7 @@ import time
 import os
 
 from locations import union, walk_through_greenspace1, down_riv
-from game_state import set_player_data, set_paper_topic, game_state
+from game_state import set_player_data
 
 pronouns_female = ["she", "her", "hers"]
 pronouns_male = ["he", "him", "his"]
