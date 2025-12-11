@@ -386,7 +386,7 @@ tereesa_start = dialogue_node(
 need_curtain = dialogue_node(
     "'It's really nothing worth looking at, you should check out the other activities.' His eyes are telling you that he doesn't want you behind the curtain, so maybe it's for the best if you don't.",
     {
-        ("1", "one"): ("'I'll go check out the other activities, I guess,' you reply.",different_activity())
+        ("1", "one"): ("'I'll go check out the other activities, I guess,' you reply.",different_activity)
     }
 
 )
