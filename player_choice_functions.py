@@ -199,8 +199,8 @@ def convention_activities():
             from locations import mascot_panels
             mascot_panels()
         elif choice == ("5","five") and not game_state.get("mascot_cafe_visit"):
-            from locations import meet_n_greets
-            meet_n_greets()
+            from locations import mascot_cafe
+            mascot_cafe()
         else:
             print("Sorry, I don't understand that. Try again.\n")
 
