@@ -194,6 +194,106 @@ def convention_activities():
             mascot_cafe()
         else:
             print("Sorry, I don't understand that. Try again.\n")
+def dating_show_pick():
+    game_state["dating_show_pick"] =True
+    mascot_list=["Brutus","Sparty","Tereesa"]
+    print("Who do you want to pick?")
+    for i, name in enumerate(mascot_list, start=1):
+        print(f"{i}. {name.capitalize()}")
+
+    while True:
+        choice = input("> ").lower().strip()
+
+        # number choice
+        if choice.isdigit():
+            index = int(choice) - 1
+            if 0 <= index < len(mascot_list):
+                chosen = mascot_list[index]
+            else:
+                print("Not a valid number.")
+                continue
+
+        # name choice
+        else:
+            if choice in mascot_list:
+                chosen = choice
+            else:
+                print("Type a valid number or the name.")
+                continue
+
+        # run dialogue
+        if chosen == "brutus":
+            print("Brutus is very pleased. 'I'll take you out somewhere nice in Ohio!'")
+
+        elif chosen == "sparty":
+            print("Sparty is very pleased. He gives you a huge thumbs up.")
+
+        elif chosen == "tereesa":
+            print("Tereesa is very pleased. You can see her leaves shaking.")
+
+
+
+def dating_show_choices():
+    # People not talked to yet
+    available = []
+
+    if not game_state.get("brutus_talk"):
+        available.append("brutus")
+    if not game_state.get("sparty_talk"):
+        available.append("sparty")
+    if not game_state.get("tereesa_talk"):
+        available.append("tereesa")
+
+    # Show choices
+    print("Who do you want to talk to?")
+    for i, name in enumerate(available, start=1):
+        print(f"{i}. {name.capitalize()}")
+
+    while True:
+        choice = input("> ").lower().strip()
+
+        #Numeration
+        if choice.isdigit():
+            index = int(choice) - 1
+            if 0 <= index < len(available):
+                chosen = available[index]
+            else:
+                print("Not a valid number.")
+                continue
+
+        #Name choices
+        else:
+            if choice in available:
+                chosen = choice
+            else:
+                print("Type the number or the name of the character.")
+                continue
+
+        #Run the dialogue
+        if chosen == "brutus":
+            from dialogues import read_brutus
+            read_brutus()
+            game_state["brutus_talk"] = True
+
+        elif chosen == "sparty":
+            from dialogues import read_sparty
+            read_sparty()
+            game_state["sparty_talk"] = True
+
+        elif chosen == "tereesa":
+            from dialogues import read_tereesa
+            read_tereesa()
+            game_state["tereesa_talk"] = True
+
+        dating_show_pick()
+        break
+
+
+
+
+
+
+
 
 
 

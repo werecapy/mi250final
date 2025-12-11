@@ -27,6 +27,10 @@ game_state = {
     "artist_alley_visit": False,
 "mascot_panel_visit": False,
 "meet_n_greets_visit": False,
+    "brutus_talk": False,
+    "sparty_talk": False,
+    "tereesa_talk": False,
+"dating_show_pick": None
 
 }
 def set_player_data(user_name, user_input_gender_save,user_gender, user_age):
