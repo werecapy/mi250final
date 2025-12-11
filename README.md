@@ -25,6 +25,8 @@ There should be no external libraries needed to run this game
     -inventory_screen.py is responsible for handling the visual part of the game. It is a visual inventory
     -poster_screen.py is supposed to show the player a poster.
     -Characters.py does not do anything as the scope of this project can only be so large, it was going to be for the mascots.
+## Notes
+I have tried to play test this a fair bit, unfortunately I was unable to get someone to look indepth at my code and I don't know anyone that knows python well enough to look at this and know what is going on. So I used AI as a debugger/pair programmer. This way, I was able to get a lot more story done and get less coding errors.
 
 
 ## Roadmap
