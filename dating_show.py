@@ -41,7 +41,8 @@ def readbrutus():
     game_state['brutus_talk'] = True
     read_lines("brutus")
 
-
+def dating_show_choose():
+    dating_show_choices()
 
 
 #---------------EMCEE----------
@@ -51,7 +52,7 @@ def readbrutus():
 heck_yeah=dialogue_node(
     "'Great, let's begin! Who would you like to talk to first? Chair one, two, or three?'",
     {
-        ('1',"one"):("Press 1 to continue",dating_show_choices)
+        ('1',"one"):("Press 1 to continue",dating_show_choose)
     }
 
 )

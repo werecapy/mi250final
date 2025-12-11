@@ -1,11 +1,7 @@
-# ============ dialogues.py (FIXED) ============
-
-
+# ============ dialogues.py ============
 
 from dialogue import dialogue_node
 from game_state import game_state
-
-
 
 # ============ CALLBACK FUNCTIONS ============
 # These are called when dialogue ends
@@ -13,6 +9,7 @@ from game_state import game_state
 def go_to_convention():
     """Player agrees to go to convention"""
     print("You head off to the mascot convention!\n")
+    # Move the import inside the function to avoid circular import
     from locations import breslin
     breslin()
 
@@ -22,10 +19,8 @@ def write_paper(paper_topic=game_state["paper_topic"]):
     import random
     hours = random.randint(1, 5)
     breaks = random.randint(1, 5)
-    print(f"The space is clean and quiet. While it does"
-          f" take a while, you bang out your paper in "
-          f"{hours} hours and take {breaks} breaks. The"
-          f"walk back feels glorious and the playlist "
+    print(f"The space is clean and quiet. While it does take a while, you bang out your paper in "
+          f"{hours} hours and take {breaks} breaks. The walk back feels glorious and the playlist "
           f"in your headphones lifts your spirits.\n")
 
 def go_back_to_library(paper_topic=game_state["paper_topic"]):
@@ -33,12 +28,12 @@ def go_back_to_library(paper_topic=game_state["paper_topic"]):
     print(f"You head back to the library to write paper on {paper_topic}. The fourth floor is pretty quiet and you find a space quite easily.\n")
     choice = input("Would you like to see if the convention is still going on? Type 'yes' or 'no'.\n")
     if choice == 'yes':
-
         print("Miraculously, the convention is still going on! You can't believe your luck.")
         go_to_convention()
     else:
         print("You head back to your apartment after a long homework session. It wasn't fun, but you got all of your homework done for the next two weeks!"
               "You treat yourself to some takeout and call it a night.")
+
 def stay_at_convention():
     """Player stays at convention after Otto's encouragement"""
     print("You decide to stick around and explore more.\n")
@@ -57,25 +52,21 @@ def talk_to_mascot():
     print("The mascot seems pleased!\n")
     game_state['meet_tereesa'] = True
 
-def take_brochure():
-    pass
-    #this will have to connect back to player choices or something because the
-    # brochure needs to go in the backpack
-
 def pamph():
     from inventory_screen import pamphlet_vis
     pamphlet_vis()
-def go_to_dating_show():
 
+def go_to_dating_show():
+    # Move import inside function
     from locations import mascot_panels
-    #Still gritty talking
     print("'Now hold on to your horses, I think you need to come with me to the mascot panel I'm about to be in. It'll be great!\n"
-          "He drags you with him as he walks to the panels. You can't begin to emagine the ")
+          "He drags you with him as he walks to the panels. You can't begin to imagine what is about to happen.")
     mascot_panels()
 
 def different_activity():
     from player_choice_functions import convention_activities
     convention_activities()
+
 
 def close_cafe():
     print("'We're actually closing up. Sorry. The people already seated are the last to be served.' The buff mascot says. You look down at his name take and it says 'Brutus.'\n"

@@ -29,7 +29,7 @@ def union():
     if not game_state["combo_purchase"]:
         print("Passing through the Sparty's, you think about getting a combo.\n")
         player_combo()
-    if game_state["combo_purchase"] == True:
+    if game_state["combo_purchase"] is True:
         print("As fun as getting another combo would be, you have to wait 15 minutes.\n")
     print("You continue through the union...\n")
     choice = input("What do you want to do next?\n"
