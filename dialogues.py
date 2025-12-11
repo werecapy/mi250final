@@ -398,13 +398,13 @@ before_show =dialogue_node(
         "'Now hold on to your horses,' he says.' I think you need to come with me to the mascot panel I'm about to be in. It'll be great!\n"
         "He drags you with him as he walks to the panels. You can't begin to imagine what is about to happen.",
     {
-        ("1", 'one'):("You let him drag you to the panels. It might be fun!",go_to_dating_show())
+        ("1", 'one'):("You let him drag you to the panels. It might be fun!",go_to_dating_show)
     }
 )
 look_lost = dialogue_node(
     "'Well the only way not to fit in here is to look lost. Just try to have some fun and you'll totally forget it's your first time!'",
 {
-    ("1", "one"): ("That was pretty deep. He walks away before you can manage to get his name. His retreating fuzzy form melts into the crowd.",different_activity())
+    ("1", "one"): ("That was pretty deep. He walks away before you can manage to get his name. His retreating fuzzy form melts into the crowd.",different_activity)
 }
 )
 weird_guy=dialogue_node(
@@ -417,7 +417,7 @@ weird_guy=dialogue_node(
 here_and_there = dialogue_node(
     "'They're here and there.' He says,' I gotta run, but you should check out the other activities.'",
     {
-        ("1", "one"): ("'Ok!'",different_activity())
+        ("1", "one"): ("'Ok!'",different_activity)
     }
 )
 gritty_name= dialogue_node(
