@@ -117,11 +117,11 @@ def handle_click(x, y):
 
 # Set up the screen and turtle
 
-
-turtle.speed(0) # Fastest speed for drawing
-window_title()
-# Bind the handle_click function to mouse clicks on the screen
-turtle.onscreenclick(handle_click)
-
-# Start the main loop to listen for events
-#turtle.mainloop()
+if __name__ == "__main__":
+    # This only runs when you execute inventory_screen.py directly for testing
+    print("Testing inventory screen...")
+    init_turtle()
+    turtle.speed(0)
+    window_title()
+    turtle.onscreenclick(handle_click)
+    turtle.mainloop()
