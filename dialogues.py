@@ -65,7 +65,17 @@ def take_brochure():
 def pamph():
     from inventory_screen import pamphlet_vis
     pamphlet_vis()
+def go_to_dating_show():
 
+    from locations import mascot_panels
+    #Still gritty talking
+    print("'Now hold on to your horses, I think you need to come with me to the mascot panel I'm about to be in. It'll be great!\n"
+          "He drags you with him as he walks to the panels. You can't begin to emagine the ")
+    mascot_panels()
+
+def different_activity():
+    from player_choice_functions import convention_activities
+    convention_activities()
 
 # ============ WRAPPER FUNCTIONS ============
 #These functions belong here, but are imported to other places
@@ -85,9 +95,9 @@ def player_tereesa_ch_1():
     """Called from sit_in_beal()"""
     tereesa_start.display()
 
-def player_grizzy_ch_1():
+def player_gritty_ch_1():
     """Called from artist_alley"""
-    grizzy_start.display()
+    gritty_start.display()
 # ============ SPARTY DIALOGUE TREE ============
 
 sparty_response_to_paper = dialogue_node(
@@ -336,7 +346,7 @@ gave_away = dialogue_node(
 )
 
 blew_cover = dialogue_node(
-    "So I blew my own cover again, that really sucks!",
+    "'So I blew my own cover again, that really sucks!'",
     {
         ("1", "one"): (
             "'It's okay, you tried your best.'",
@@ -371,26 +381,64 @@ tereesa_start = dialogue_node(
     }
 )
 
-# ============ GRIZZY DIALOGUE TREE ============
+# ============ gritty DIALOGUE TREE ============
 
-curtains= dialogue_node(
-    "There's nothing interesting back there!",
+need_curtain = dialogue_node(
+    "'It's really nothing worth looking at, you should check out the other activities.' His eyes are telling you that he doesn't want you behind the curtain, so maybe it's for the best if you don't.",
     {
-        ("1", "one"): ("'Oh, well... ok. What's your name again?"),
-        ("2", "two"): ("'Something about you telling me not to go back there is making me *want* to go back there.' He seems really dead set on you *not* going behind the curtain.")
+        ("1", "one"): ("'I'll go check out the other activities, I guess,' you reply.",different_activity())
     }
+
 )
 
+
+
+before_show =dialogue_node(
+
+        "'Now hold on to your horses,' he says.' I think you need to come with me to the mascot panel I'm about to be in. It'll be great!\n"
+        "He drags you with him as he walks to the panels. You can't begin to imagine what is about to happen.",
+    {
+        ("1", 'one'):("You let him drag you to the panels. It might be fun!",go_to_dating_show())
+    }
+)
+look_lost = dialogue_node(
+    "'Well the only way not to fit in here is to look lost. Just try to have some fun and you'll totally forget it's your first time!'",
+{
+    ("1", "one"): ("That was pretty deep. He walks away before you can manage to get his name. His retreating fuzzy form melts into the crowd.",different_activity())
+}
+)
 weird_guy=dialogue_node(
     "Hey! Didn't anyone ever tell you not to ask that at a mascot convention? It looks like your first time, so I'll let it slide...'",
     {
-        ("1", "one"): ("")
+        ("1", "one"): ("You look to the floor with embarrassment. 'I'm glad you noticed, I feel so out of place here.",look_lost),
+        ("2", "two"): ("'This convention is getting a bit ridiculous at this point.' You turn to walk off.", before_show)
     }
 )
-grizzy_start = dialogue_node(
-    "Woah there, partner! Where do you think you're headed? The rest of the convention is over here!\n",
+here_and_there = dialogue_node(
+    "'They're here and there.' He says,' I gotta run, but you should check out the other activities.'",
     {
-        ("1", "one"): ("'I was going to check out the curtained area.'",curtains),
-        ("2", "two"):("This mascot is pretty weird. 'What are you supposed to be?'",weird_guy),
+        ("1", "one"): ("'Ok!'",different_activity())
+    }
+)
+gritty_name= dialogue_node(
+    "'The names' gritty! I'm a mascot for the Philly Flyers!'",
+    {
+        ("1", "one"): ("'Sorry, but what are you?' He looks like a giant monster to you. Maybe there's a type of monster you haven't heard of yet.",weird_guy),
+        ("2", "two"): ("You feel wowed. 'A professional league mascot! That's cool. Are any of your friends here?'",here_and_there)
+    }
+)
+curtains= dialogue_node(
+    "'There's nothing interesting back there!' He asserts.",
+    {
+        ("1", "one"): ("'Oh, well... ok. What's your name again?' you ask",gritty_name),
+        ("2", "two"): ("Your eyebrow raises. 'Something about you telling me not to go back there is making me *want* to go back there.' He seems really dead set on you *not* going behind the curtain.",need_curtain)
+    }
+)
+gritty_start = dialogue_node(
+    "Woah there, partner! Where do you think you're headed? The rest of the convention is over here!'\n"
+    "You turn around and see a giant orange monster.",
+    {
+        ("1", "one"): ("'I was going to check out the curtained area,' you reply.",curtains),
+        ("2", "two"):("This mascot is pretty weird. 'What are you supposed to be?' you ask.",weird_guy),
     }
 )

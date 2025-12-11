@@ -8,7 +8,7 @@ import sys
 import io
 from contextlib import redirect_stdout, redirect_stderr
 
-from game_state import set_player_data
+
 
 
 def validate_imports():
@@ -69,7 +69,7 @@ def validate_game_state():
 
 def validate_functions():
     """Check if all critical functions exist and are callable"""
-    from locations import union, walk_through_greenspace1, library, down_riv, breslin, walk_through_greenspace2, sit_in_beal,eating_contest_watch, mascot_cafe, mascot_panels, sticker_booth,eating_contest,artist_alley,meet_n_greets
+    from locations import union, walk_through_greenspace1, library, down_riv, breslin, walk_through_greenspace2, sit_in_beal, mascot_cafe, mascot_panels, sticker_booth,eating_contest,artist_alley,meet_n_greets
     from player_choice_functions import player_combo, paper_topic_choice, eat_riv,get_choice
     from game_state import set_player_data, set_paper_topic,add_to_backpack,purchase_meal,purchase_combo,add_stickers,get_game_state
     from dialogues import go_to_convention,go_back_to_library,write_paper,stay_at_convention,leave_convention,ignore_mascot,talk_to_mascot,take_brochure
@@ -98,7 +98,6 @@ def validate_functions():
         ("get_game_state" ,get_game_state ) ,
         ('walk_through_greenspace2', walk_through_greenspace2),
         ("sit_in_beal", sit_in_beal),
-        ("eating_contest_watch", eating_contest_watch),
         ("get_choice",get_choice) ,
         ("go_to_convention", go_to_convention) ,
         ("go_back_to_library", go_back_to_library) ,

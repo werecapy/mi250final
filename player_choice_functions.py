@@ -34,7 +34,7 @@ def paper_topic_choice():
 
 def player_combo():
     """Player gets to choose combo from Union Sparty's"""
-    combo = "none"
+    combo = None
     combo_options = {
         "1": ("A Woody's burrito, energy drink, and a bag of chips", "woody_combo"),
         "one": ("A Woody's burrito, energy drink, and a bag of chips", "woody_combo"),

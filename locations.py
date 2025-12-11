@@ -1,5 +1,6 @@
 # Can import game_state and player_choice_functions, but NOT main.py
 import time
+from inventory_screen import update_inventory
 import random
 from game_state import game_state
 from poster_screen import poster_pic
@@ -17,7 +18,7 @@ from dialogues import (
     player_sparty_ch_1,
     player_otto_ch_1,
     player_brutus_ch_1,
-    player_tereesa_ch_1
+
 )
 def union():
     """Union location - buy combos"""
@@ -66,7 +67,7 @@ def walk_through_greenspace2():
 
 
 def library():
-    import inventory_screen
+
     """Meet Sparty at the library"""
     game_state["meet_sparty"] = True #Saves whether player has met Sparty or not
     print("Walking through the green space, you finally get to the front of the library. "
