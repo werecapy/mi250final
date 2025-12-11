@@ -8,37 +8,10 @@ import turtle
     poster_window.bgpic("poster.gif")
     poster_window.exitonclick()
 
-    poster_window.mainloop()"""
+    poster_window.mainloop() first attempt..."""
 
 
-"""
-def poster_pic():
-    #Shows poster in window
-    poster_window = turtle.Screen()
-    poster_window.title("Mascot Convention Poster")
-    #make poster show up
-    poster_turt = turtle.Turtle()
-    poster_window.register_shape('poster.gif')
-    poster_turt.hideturtle()
-    poster_turt.shape('poster.gif')
-    poster_turt.shapesize(50)
-    try:
 
-        poster_window.bgpic('poster.gif')
-    except:
-        print("poster.gif not found")
-
-    # Close on click
-    def close_window(x, y):
-        poster_window.bye()
-
-    poster_window.onclick(close_window)
-
-    try:
-        poster_window.mainloop()
-    except:
-        pass
-poster_pic()"""
 def poster_pic():
     # Shows poster in window
     screen = turtle.Screen()
@@ -51,16 +24,15 @@ def poster_pic():
         print("poster.gif not found")
         return
 
-    # Create turtle (not necessary for bgpic but kept)
+    # Create turtle
     poster = turtle.Turtle()
     poster.hideturtle()
 
-    # Register shape safely
-    try:
-        screen.register_shape("poster.gif")
-        poster.shape("poster.gif")
-    except turtle.TurtleGraphicsError:
-        pass
+    # Register shape
+
+    screen.register_shape("poster.gif")
+    poster.shape("poster.gif")
+
 
     # Close on click
     def close_window(x, y):

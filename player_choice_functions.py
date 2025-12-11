@@ -194,10 +194,14 @@ def convention_activities():
             mascot_cafe()
         else:
             print("Sorry, I don't understand that. Try again.\n")
+
+
 def dating_show_pick():
-    game_state["dating_show_pick"] =True
-    mascot_list=["Brutus","Sparty","Tereesa"]
+    #final pick for dating show
+    game_state["dating_show_pick"] = True
+    mascot_list = ["brutus", "sparty", "tereesa"]
     print("Who do you want to pick?")
+    #For loop display
     for i, name in enumerate(mascot_list, start=1):
         print(f"{i}. {name.capitalize()}")
 
@@ -224,13 +228,15 @@ def dating_show_pick():
         # run dialogue
         if chosen == "brutus":
             print("Brutus is very pleased. 'I'll take you out somewhere nice in Ohio!'")
+            break
 
         elif chosen == "sparty":
             print("Sparty is very pleased. He gives you a huge thumbs up.")
+            break
 
         elif chosen == "tereesa":
             print("Tereesa is very pleased. You can see her leaves shaking.")
-
+            break
 
 
 def dating_show_choices():
@@ -244,15 +250,15 @@ def dating_show_choices():
     if not game_state.get("tereesa_talk"):
         available.append("tereesa")
 
-    # Show choices
+    # For loop display
     print("Who do you want to talk to?")
     for i, name in enumerate(available, start=1):
-        print(f"{i}. {name.capitalize()}")
+        print(f"{i}. ???")
 
     while True:
         choice = input("> ").lower().strip()
 
-        #Numeration
+        # Numeration
         if choice.isdigit():
             index = int(choice) - 1
             if 0 <= index < len(available):
@@ -261,7 +267,7 @@ def dating_show_choices():
                 print("Not a valid number.")
                 continue
 
-        #Name choices
+        # Name choices
         else:
             if choice in available:
                 chosen = choice
@@ -269,7 +275,7 @@ def dating_show_choices():
                 print("Type the number or the name of the character.")
                 continue
 
-        #Run the dialogue
+        # Run the dialogue
         if chosen == "brutus":
             from dialogues import read_brutus
             read_brutus()
@@ -285,11 +291,15 @@ def dating_show_choices():
             read_tereesa()
             game_state["tereesa_talk"] = True
 
-        dating_show_pick()
-        break
-
-
-
+        # Check if all mascots have been talked to
+        if (game_state.get("brutus_talk") and
+            game_state.get("sparty_talk") and
+            game_state.get("tereesa_talk")):
+            dating_show_pick()
+            break
+        else:
+            dating_show_choices()
+            break
 
 
 

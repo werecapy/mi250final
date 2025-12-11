@@ -25,7 +25,7 @@ def union():
     print("The union is as busy as ever!\n"
           "Every table has at least one student sitting at it. "
           "\n")
-
+    #save point
     if not game_state["combo_purchase"]:
         print("Passing through the Sparty's, you think about getting a combo.\n")
         player_combo()
@@ -93,7 +93,7 @@ def down_riv():
     """Down the river location - restaurants"""
     print("There are a TON of cars, even though it's usually not this busy!\n"
           "Even the sign trucks are slowly crawling amongst the crowd of vehicles.\n")
-
+    #Save point
     if game_state["meal_purchased"]:
         meal_name = game_state["meal_name"] #Saves whether the player has had a meal or not
         print(f"You're carrying your {meal_name}.\n") #inserts the type of meal
@@ -120,6 +120,7 @@ def breslin():
 
 
 def mascot_cafe():
+    #save point
     game_state["mascot_cafe_visit"]= True
     """Meet Brutus at the mascot cafe"""
     game_state["meet_brutus"] = True #Saves whether player has met Brutus or not
