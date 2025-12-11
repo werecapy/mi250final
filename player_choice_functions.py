@@ -131,11 +131,11 @@ def sit_in_beal():
 
     if combo_type == "woody_combo":
         print("Sitting in a secluded part of the garden, you feast on your delicious "
-              "Woody's burrito...\n")
+              "Woody's burrito... \n The tree next to you is beautiful.\n")
     elif combo_type == "ramen_combo":
-        print("Well, you didn't think that through. The noodles are raw...\n")
+        print("You find a secluded part of Beal garden to sit in to eat. You didn't think that through. The noodles are raw... Thankfully, you're sitting next to a tree.\n")
     elif combo_type == "protein_combo":
-        print("It might not be glamorous, but it works...\n")
+        print("Thankfully, you found a place to sit in beal It might not be glamorous, but it works...\n The tree next to you is beautiful.\n")
 
     time.sleep(2)
     print("You notice the tree next to you isn't really a tree at all!\n")

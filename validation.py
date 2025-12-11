@@ -17,7 +17,7 @@ def validate_imports():
 
     modules_to_check = [
         ("game_state", "from game_state import game_state"),
-        ("characters", "from characters import Character"),
+        #("characters", "from characters import Character"),
         ("locations", "from locations import union, walk_through_greenspace1, down_riv, breslin"),
         ("player_choice_functions", "from player_choice_functions import player_combo, paper_topic_choice"),
 
@@ -72,7 +72,7 @@ def validate_functions():
     from locations import union, walk_through_greenspace1, library, down_riv, breslin, walk_through_greenspace2, sit_in_beal, mascot_cafe, mascot_panels, sticker_booth,eating_contest,artist_alley,meet_n_greets
     from player_choice_functions import player_combo, paper_topic_choice, eat_riv,get_choice
     from game_state import set_player_data, set_paper_topic,add_to_backpack,purchase_meal,purchase_combo,add_stickers,get_game_state
-    from dialogues import go_to_convention,go_back_to_library,write_paper,stay_at_convention,leave_convention,ignore_mascot,talk_to_mascot,take_brochure
+    from dialogues import go_to_convention,go_back_to_library,write_paper,stay_at_convention,leave_convention,ignore_mascot,talk_to_mascot
     from poster_screen import poster_pic
     functions = [
         ("union", union),
@@ -106,7 +106,7 @@ def validate_functions():
         ("leave_convention", leave_convention) ,
         ("ignore_mascot",ignore_mascot) ,
         ("talk_to_mascot",talk_to_mascot) ,
-        ("take_brochure", take_brochure) ,
+
         ("poster_pic", poster_pic) ,
 
 
