@@ -1,6 +1,6 @@
 import turtle
 from game_state import *
-# Screen set up
+# inventory screen set up
 screen = turtle.Screen()
 screen.bgcolor("white")
 screen.setup(600, 400)
@@ -10,9 +10,19 @@ screen.title("Mascot Dating Simulator")
 title = turtle.Turtle()
 title.hideturtle()
 title.speed(0)
+combo_turtle = turtle.Turtle()
+#images
+screen.register_shape('combo.gif')
+screen.register_shape('five_guys.gif')
+screen.register_shape('playa_bowl.gif')
+screen.register_shape('rasing.gif')
+screen.register_shape('kimchi.gif')
+screen.register_shape('dwc.gif')
+
+
 
 # Functions
-def window_title(btitle="Backpack"):
+def window_title():
     """Displays the window title"""
     title.clear()
     title.penup()
@@ -23,15 +33,14 @@ def window_title(btitle="Backpack"):
 
 def combo_pic():
     #handles combo in inventory
-    if game_state["combo_type"] == "woody_combo":
-        pass
-    elif game_state["combo_type"] == "ramen_combo":
-        pass
-    else:
-        #this is going to be the protein combo
-        pass
+    combo_turtle.hideturtle()
+    combo_turtle.teleport(-248.0, 134.0)
+    combo_turtle.shape()
 
 def meal_pic():
+    #handles meal picture in inventory
+    combo_turtle.hideturtle()
+    combo_turtle.teleport(-139.0, 129.0)
     if game_state["meal_name"] == "royal beef bulgogi bento":
         pass
     elif game_state["meal_name"] == "orange power bowl":
@@ -44,8 +53,6 @@ def meal_pic():
         #10 traditional wings with buffalo sauce
         pass
 
-def poster_pic():
-    pass
 
 def pamphlet_vis():
     pass
@@ -59,11 +66,10 @@ def sticker_vis():
 
 
 
-# Test with different titles
-window_title("Mascot Dating Simulator")
 
-# You can change the title later
-# window_title("Character Selection")
+
+
+
 
 #dev stuff
 def handle_click(x, y):
@@ -73,16 +79,13 @@ def handle_click(x, y):
     coord=turtle.Turtle()
     coord.clear()
     coord.teleport(x,y)
-    coord.write('Backpack', align="right", font=("Arial", 24, "bold"))
-    # turtle.goto(x, y)
-    # turtle.dot(5, "red")
-    # turtle.pendown()
+
 
 # Set up the screen and turtle
 
 
 turtle.speed(0) # Fastest speed for drawing
-
+window_title()
 # Bind the handle_click function to mouse clicks on the screen
 turtle.onscreenclick(handle_click)
 

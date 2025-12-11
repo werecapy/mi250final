@@ -2,7 +2,7 @@
 import time
 import random
 from game_state import game_state
-from inventory_screen import poster_pic
+from poster_screen import poster_pic
 from player_choice_functions import (
     player_combo,
     paper_topic_choice,
