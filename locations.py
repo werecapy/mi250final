@@ -195,10 +195,16 @@ def artist_alley():
 def mascot_panels():
     """Mascot panels at convention"""
     game_state["mascot_panel_visit"] = True
-    print("You find the panel discussion. Mascots are talking about their experiences.\n")
+    print("It's a very lively area with a stage set up. There's two parts to the set, the left has two stools, the right has five.\n"
+          "All five stools are filled with various mascots, some you've seen, some not. On the right, the emcee is looking into the crowd.\n"
+          "There's a sign above it all that reads 'Mascot Speed Dating!' Oh no! What have you gotten yourself into! Before you can hightail it out of Breslin, the emcee spots you.\n"
+          "While wishing for a giant bird mascot to swoop down and rescue you from this fate, the crowd seems to have a mind of it's own!\n"
+          "It pushes you to the stage where you're shove up the side stairs. There's no going back, so you take the last seat on the stage. ")
+
 
 
 def meet_n_greets():
     """Meet & greets at convention"""
     game_state["meet_n_greets_visit"] = True
-    print("Looking across the room, you observe the many different mascots waiting to meet you!\n")
+    print("Looking across the room, you observe the many different mascots waiting to meet you!\n"
+          "It's wayyyy too crowded, so you find something else to do.")

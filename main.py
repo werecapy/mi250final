@@ -125,14 +125,13 @@ def thanks():
 
 greet()
 thanks()
-if __name__ == "__main__":
 
 
-    user_name, user_input_gender_save, user_gender, user_age = greet()
-    save(user_name, user_input_gender_save, user_gender, user_age)
 
-    # Store player data in shared state
-    set_player_data(user_name, user_input_gender_save, user_gender, user_age)
+
+
+# Store player data in shared state
+
 
 
 

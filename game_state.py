@@ -29,12 +29,12 @@ game_state = {
 "meet_n_greets_visit": False,
 
 }
-def set_player_data(name, gender, pronouns, age):
+def set_player_data(user_name, user_input_gender_save,user_gender, user_age):
     """How all personal information is saved"""
-    game_state["player_name"] = name
-    game_state["player_gender"] = gender
-    game_state["player_pronouns"] = pronouns
-    game_state["player_age"] = age
+    game_state["player_name"] = user_name
+    game_state["player_gender"] = user_input_gender_save
+    game_state["player_pronouns"] = user_gender
+    game_state["player_age"] = user_age
 
 def set_paper_topic(topic):
     """How paper topic is saves"""
