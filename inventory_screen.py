@@ -105,4 +105,4 @@ window_title()
 turtle.onscreenclick(handle_click)
 
 # Start the main loop to listen for events
-turtle.mainloop()
+#turtle.mainloop()

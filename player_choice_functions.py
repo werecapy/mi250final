@@ -192,19 +192,19 @@ def convention_activities():
     #get choice
     while True:
         choice = input("> ").lower()
-        if choice == ("1", "one"):
+        if choice == ("1", "one") and not game_state.get("mascot_cafe_visit"):
             from locations import mascot_cafe
             mascot_cafe()
-        elif choice == ("2","two"):
+        elif choice == ("2","two") and not game_state.get("eating_contest_visit"):
             from locations import eating_contest
             eating_contest()
-        elif choice == ("3","three"):
+        elif choice == ("3","three") and not game_state.get("artist_alley_visit"):
             from locations import artist_alley
             artist_alley()
-        elif choice == ("4","four"):
+        elif choice == ("4","four") and not game_state.get("mascot_panel_visit"):
             from locations import mascot_panels
             mascot_panels()
-        elif choice == ("5","five"):
+        elif choice == ("5","five") and not game_state.get("mascot_cafe_visit"):
             from locations import meet_n_greets
             meet_n_greets()
         else:
