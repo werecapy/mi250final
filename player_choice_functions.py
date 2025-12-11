@@ -160,3 +160,45 @@ def pick_sticker():
     else:
         print("Well that was kind of a let down...\n")
     return chosen_sticker
+
+def convention_activities():
+    #List of activities not done
+    available=[]
+
+    if not game_state.get("mascot_cafe_visit"):
+        available.append("1. Mascot Cafe")
+    if not game_state.get("eating_contest_visit"):
+        available.append("2. Eating Contest")
+    if not game_state.get("artist_alley_visit"):
+        available.append("3. Artist Alley")
+    if not game_state.get("mascot_panel_visit"):
+        available.append("4. Mascot Panels")
+    if not game_state.get("meet_n_greets_visit"):
+        available.append("5. Meet & Greets")
+    #ask player what they want
+    print("What do you want to do?")
+    for option in available:
+        print(option)
+    #get choice
+    while True:
+        choice = input("> ").lower()
+        if choice == "1" or "one":
+            from locations import mascot_cafe
+            mascot_cafe()
+        elif choice == "2" or "two":
+            from locations import eating_contest
+            eating_contest()
+        elif choice == "3" or "three":
+            from locations import artist_alley
+            artist_alley()
+        elif choice == "4" or "four":
+            from locations import mascot_panels
+            mascot_panels()
+        elif choice == "5" or "five":
+            from locations import meet_n_greets
+            meet_n_greets()
+        else:
+            print("Sorry, I don't understand that. Try again.\n")
+
+
+

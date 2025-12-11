@@ -19,6 +19,14 @@ game_state = {
     "meal_name":None,
     'meet_tereesa': False,
     "sticker" : None,
+    "eating_contest_visit": False,
+    "food_contest_save": None,
+    "eating_contest_win": False,
+    "mascot_cafe_visit": False,
+    "sticker_booth_visit": False,
+    "artist_alley_visit": False,
+"mascot_panel_visit": False,
+"meet_n_greets_visit": False,
 
 }
 def set_player_data(name, gender, pronouns, age):
@@ -56,4 +64,6 @@ def add_stickers(sticker):
 
 def get_game_state():
     return game_state
+
+
 

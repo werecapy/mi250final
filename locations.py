@@ -118,6 +118,7 @@ def breslin():
 
 
 def mascot_cafe():
+    game_state["mascot_cafe_visit"]= True
     """Meet Brutus at the mascot cafe"""
     game_state["meet_brutus"] = True #Saves whether player has met Brutus or not
     print("Wandering over to the mascot cafe, it looks just as busy "
@@ -130,18 +131,38 @@ def mascot_cafe():
 
 
 def eating_contest():
+    game_state["eating_contest_visit"] = True
     print("When you get to the stall you can't help but notice there's still a lot of people for it being a mascot convention."
           "The emcee is looking around in the crowd for their last participant...")
+    if random.randint(0, 1) == 0:
+        print("Oh no! He spotted you and pointed you out. It kind of feels like you have to go up there now...\n")
+        time.sleep(5)
+        print("What were they eating again?")
+        food_choices=["pie","cake","hot dogs","pizza"]
+        food_contest=random.choice(food_choices)
+        game_state["food_contest_save"]=food_contest
+        print(f"Oh no! It's {food_contest}!\n"
+              f"That's so filling, you'll never win!")
+        time.sleep(5)
+        if random.randint(0, 20) == 0:
+            print("Holy moly! You did it! You out ate all the other competitors!")
+            game_state["eating_contest_win"] = True
+        else:
+            print("It turned out just like you thought it would. While you weren't last place, you were far from first.")
+
+    else:
+        print("Thankfully, the emcee's gaze passes right over you. Eternally grateful, you get out of there before he has the chance to lay his eyes on you again.\n"
+              "To your right, you see the mascot meet and greets. What a fine escape plan!")
 
 
 
-def eating_contest_watch():
-    pass
+
 
 
 
 def sticker_booth():
     """Sticker booth at artist alley"""
+    game_state["sticker_booth_visit"] = True
     print("A few dozen boxes of envelopes lay before you on the vendor's table. Each envelope contains one sticker.\n")
 
     choice = input("Would you like to buy a envelope? Type 'yes' or 'no'\n> ").lower()
@@ -156,6 +177,7 @@ def sticker_booth():
 
 def artist_alley():
     """Artist alley at convention"""
+    game_state["artist_alley_visit"] = True
     print("Wow! There's so much good art here! Vendors have traveled here from all over "
           "with their own mascots. Some of the mascots are ones you've never seen before.\n")
 
@@ -170,9 +192,11 @@ def artist_alley():
 
 def mascot_panels():
     """Mascot panels at convention"""
+    game_state["mascot_panel_visit"] = True
     print("You find the panel discussion. Mascots are talking about their experiences.\n")
 
 
 def meet_n_greets():
     """Meet & greets at convention"""
+    game_state["meet_n_greets_visit"] = True
     print("Looking across the room, you observe the many different mascots waiting to meet you!\n")
