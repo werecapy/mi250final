@@ -18,7 +18,9 @@ screen.register_shape('playa_bowl.gif')
 screen.register_shape('rasing.gif')
 screen.register_shape('kimchi.gif')
 screen.register_shape('dwc.gif')
-
+screen.register_shape('sticker1.gif')
+screen.register_shape('sticker2.gif')
+screen.register_shape('coolsticker.gif')
 
 
 # Functions
@@ -59,7 +61,12 @@ def pamphlet_vis():
 
 
 def sticker_vis():
-    pass
+    if game_state["sticker"] == "s1":
+        pass
+    elif game_state["sticker"] == "s2":
+        pass
+    else:
+         pass
 
 
 

@@ -7,9 +7,8 @@ from player_choice_functions import (
     player_combo,
     paper_topic_choice,
 
-
     eat_riv,
-    sit_in_beal
+    sit_in_beal, pick_sticker
 
 )
 
@@ -94,8 +93,8 @@ def down_riv():
           "Even the sign trucks are slowly crawling amongst the crowd of vehicles.\n")
 
     if game_state["meal_purchased"]:
-        meal_name = game_state["meal_name"] #Saves whether the player has had a combo or not
-        print(f"You're carrying your {meal_name}.\n") #inserts the type of combo
+        meal_name = game_state["meal_name"] #Saves whether the player has had a meal or not
+        print(f"You're carrying your {meal_name}.\n") #inserts the type of meal
     else:
         eat_riv()
 
@@ -131,7 +130,9 @@ def mascot_cafe():
 
 
 def eating_contest():
-    print("When you get to the stall you can't help but notice CONTINUE")
+    print("When you get to the stall you can't help but notice there's still a lot of people for it being a mascot convention."
+          "The emcee is looking around in the crowd for their last participant...")
+
 
 
 def eating_contest_watch():
@@ -141,19 +142,15 @@ def eating_contest_watch():
 
 def sticker_booth():
     """Sticker booth at artist alley"""
-    print("A few dozen boxes of stickers lay before you on the vendor's table.\n")
+    print("A few dozen boxes of envelopes lay before you on the vendor's table. Each envelope contains one sticker.\n")
 
-    if game_state['meet_otto'] is True:
-        print("You recognize Sparty and Otto stickers, plus many others!\n")
-    elif game_state['meet_otto'] and  game_state['meet_tereesa'] is True :
-        print("You see Sparty, Otto, and Tereesa among all the stickers.")
-
-    else:
-        print("You recognize Sparty stickers and many others!\n")
-
-    choice = input("Would you like to buy a sticker? Type 'yes' or 'no'\n> ").lower()
+    choice = input("Would you like to buy a envelope? Type 'yes' or 'no'\n> ").lower()
     if choice in ("yes", "y"):
+
         game_state["get_stickers"] = True
+
+
+        pick_sticker()
         print("You got some awesome stickers!\n")
 
 
@@ -162,7 +159,7 @@ def artist_alley():
     print("Wow! There's so much good art here! Vendors have traveled here from all over "
           "with their own mascots. Some of the mascots are ones you've never seen before.\n")
 
-    choice = input("The sticker booth on your left seems promising, do you want to check it out? "
+    choice = input("The mystery sticker booth on your left seems promising, do you want to check it out? "
                    "Type 'yes' or 'no'\n> ").lower()
 
     if choice in ("yes", "y"):

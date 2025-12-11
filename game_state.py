@@ -18,6 +18,7 @@ game_state = {
     "meal_type":None,
     "meal_name":None,
     'meet_tereesa': False,
+    "sticker" : None,
 
 }
 def set_player_data(name, gender, pronouns, age):

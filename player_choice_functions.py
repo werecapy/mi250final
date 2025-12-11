@@ -150,3 +150,13 @@ def sit_in_beal():
     # Import here to avoid circular import
     from dialogues import player_tereesa_ch_1
     player_tereesa_ch_1()
+
+def pick_sticker():
+    sticker_options = ["s1", "s2", "s3"]
+    chosen_sticker = random.choice(sticker_options)
+    game_state["sticker"] = chosen_sticker
+    if game_state["sticker"] == "s3":
+        print("Woah! you got a cool sticker...\n")
+    else:
+        print("Well that was kind of a let down...\n")
+    return chosen_sticker
