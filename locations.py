@@ -1,6 +1,6 @@
 # Can import game_state and player_choice_functions, but NOT main.py
 import time
-from inventory_screen import update_inventory
+
 import random
 from game_state import game_state
 from poster_screen import poster_pic
@@ -72,7 +72,7 @@ def library():
     game_state["meet_sparty"] = True #Saves whether player has met Sparty or not
     print("Walking through the green space, you finally get to the front of the library. "
           "An interesting flyer catches your attention on the way to your usual study spot.\n")
-    poster_pic()
+
 
     input("Press enter to continue...\n")
     print("That was... interesting?\n"
