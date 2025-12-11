@@ -1,27 +1,20 @@
+# main.py - FIXED VERSION
 
+import time
+import os
 
+# Run validation BEFORE other imports
 from validation import run_all_validations, print_validation_results
 
-from tkinter import *
-import sys
-
-
-
-
-# Run silent validation first
 print("Initializing game...", end=" ", flush=True)
 validation_errors = run_all_validations(verbose=False)
 
 if not print_validation_results(validation_errors):
     exit(1)
 
-# Only continue if validation passed
-# main.py CAN import from other modules
-import time
-import os
-
+# Import game modules AFTER validation
 from locations import union, walk_through_greenspace1, down_riv
-from game_state import set_player_data, set_paper_topic, game_state
+from game_state import set_player_data, game_state
 
 pronouns_female = ["she", "her", "hers"]
 pronouns_male = ["he", "him", "his"]
@@ -29,19 +22,20 @@ pronouns_nonbinary = ["they", "them", "theirs"]
 
 
 def quit_program(prompt):
-    #Allows player to quit program
+    """Allows player to quit program"""
     choice = input(prompt).lower()
     if choice == "quit":
         if input("Are you sure? (yes/no) ").lower() == "yes":
             print("\nGoodbye!")
             thanks()
+            exit(0)
         else:
             return quit_program(prompt)
     return choice
 
 
-
 def intro():
+    """Start the game story"""
     print(
         "It's a wonderful, sunny day and you have decided to take a walk around campus before going to the library to study.\n"
         "The 1 bus is strangely full...\n"
@@ -67,12 +61,14 @@ def intro():
                 print("What? Sorry, I didn't get that.")
         else:
             print("What? Sorry, I didn't get that.")
-def greet():
-    #Starts game, greets player, and asks for info
 
-    print("="*50)
+
+def greet():
+    """Starts game, greets player, and asks for info"""
+    print("=" * 50)
     print("Welcome to Mascot Dating Simulator!\n")
     print("=" * 50)
+
     user_name = input("What is your name? ")
     print("Hello, " + user_name + "!")
 
@@ -95,19 +91,23 @@ def greet():
     user_age = int(input("How old are you? "))
 
     print(f"So your name is {user_name}, your gender is {user_input_gender_save}, and you are {user_age} years old.")
+
+    # SAVE THE PLAYER DATA
+    set_player_data(user_name, user_input_gender_save, user_gender, user_age)
+    save(user_name, user_input_gender_save, user_gender, user_age)
+
     input("Press enter to continue...")
     intro()
 
-    return user_name, user_input_gender_save, user_gender, user_age
-
 
 def save(user_name, user_input_gender_save, user_gender, user_age):
+    """Save player data to file"""
     relative_directory = "Saves"
     os.makedirs(relative_directory, exist_ok=True)
     filename = f"{user_name}.txt"
     full_path = os.path.join(relative_directory, filename)
 
-    with open(full_path, "a") as f:
+    with open(full_path, "w") as f:  # Changed to "w" to overwrite
         f.write(f"This user's name is {user_name}.\n")
         f.write(f"This user's gender is {user_input_gender_save}.\n")
         f.write(f"This user's pronouns are {user_gender}.\n")
@@ -117,22 +117,15 @@ def save(user_name, user_input_gender_save, user_gender, user_age):
 
 
 def thanks():
-
+    """End game message"""
     print("Thanks for playing!")
-    time.sleep(9)
-    return
+    time.sleep(3)
 
 
-greet()
-thanks()
-
-
-
-
-
-# Store player data in shared state
-
-
+# START THE GAME
+if __name__ == "__main__":
+    greet()
+    thanks()
 
 
 

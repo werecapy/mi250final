@@ -11,6 +11,7 @@ def poster_pic():
     poster_window.mainloop()"""
 
 
+
 def poster_pic():
     """Shows poster in window"""
     poster_window = turtle.Screen()
@@ -20,7 +21,7 @@ def poster_pic():
         poster_window.register_shape('poster.gif')
         poster_window.bgpic('poster.gif')
     except:
-        pass  # Image not found
+        pass
 
     # Close on click
     def close_window(x, y):

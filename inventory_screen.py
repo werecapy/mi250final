@@ -1,31 +1,44 @@
 import turtle
 from game_state import *
-# inventory screen set up
-screen = turtle.Screen()
-screen.bgcolor("white")
-screen.setup(600, 400)
-screen.title("Mascot Dating Simulator")
-
-# Turtles
-title = turtle.Turtle()
-title.hideturtle()
-title.speed(0)
-combo_turtle = turtle.Turtle()
-#images
-screen.register_shape('combo.gif')
-screen.register_shape('five_guys.gif')
-screen.register_shape('playa_bowl.gif')
-screen.register_shape('rasing.gif')
-screen.register_shape('kimchi.gif')
-screen.register_shape('dwc.gif')
-screen.register_shape('sticker1.gif')
-screen.register_shape('sticker2.gif')
-screen.register_shape('coolsticker.gif')
 
 
 # Functions
+def init_turtle():
+    """starts winds"""
+    global screen, title, combo_turtle
+
+    if screen is not None:
+        return  # Already initialized
+
+    # inventory screen set up
+
+    screen = turtle.Screen()
+    screen.bgcolor("white")
+    screen.setup(600, 400)
+    screen.title("Mascot Dating Simulator")
+
+    # Turtles
+
+    title.hideturtle()
+    title.speed(0)
+    combo_turtle = turtle.Turtle()
+
+    #images
+    try:
+        screen.register_shape('combo.gif')
+        screen.register_shape('five_guys.gif')
+        screen.register_shape('playa_bowl.gif')
+        screen.register_shape('rasing.gif')
+        screen.register_shape('kimchi.gif')
+        screen.register_shape('dwc.gif')
+        screen.register_shape('sticker1.gif')
+        screen.register_shape('sticker2.gif')
+        screen.register_shape('coolsticker.gif')
+    except:
+        pass
 def window_title():
     """Displays the window title"""
+    title = turtle.Turtle()
     title.clear()
     title.penup()
 
@@ -33,29 +46,34 @@ def window_title():
     title.goto(-180.0, 170.0)
     title.write('Backpack', align="right", font=("Arial", 24, "bold"))
 
+
 def combo_pic():
-    #handles combo in inventory
-    if game_state["combo_purchase"]:
+    # handles combo in inventory
+    if combo_turtle is None:
+        return
+    else:
+        game_state["combo_purchase"]=True
         combo_turtle.penup()
         combo_turtle.goto(-248.0, 134.0)
         combo_turtle.shape('combo.gif')
         combo_turtle.showturtle()
 
+
 def meal_pic():
-    #handles meal picture in inventory
+    # handles meal picture in inventory
     combo_turtle.hideturtle()
     combo_turtle.teleport(-139.0, 129.0)
     if game_state["meal_name"] == "royal beef bulgogi bento":
-        pass
+        combo_turtle.shape('royal.gif')
     elif game_state["meal_name"] == "orange power bowl":
-        pass
+        combo_turtle.shape('playa_bowl.gif')
     elif game_state["meal_name"] == "caniac combo":
-        pass
+        combo_turtle.shape('rasing.gif')
     elif game_state["meal_name"] == "double cheeseburger with a small fry":
-        pass
+        combo_turtle.shape('five_guys.gif')
     else:
         #10 traditional wings with buffalo sauce
-        pass
+        combo_turtle.shape('dwc.gif')
 
 
 def pamphlet_vis():
@@ -63,12 +81,13 @@ def pamphlet_vis():
 
 
 def sticker_vis():
+    sticker_turt=turtle.Turtle()
     if game_state["sticker"] == "s1":
-        pass
+        sticker_turt.shape("sticker1.gif")
     elif game_state["sticker"] == "s2":
-        pass
+        sticker_turt.shape("sticker2.gif")
     else:
-         pass
+         sticker_turt.shape("coolsticker.gif")
 
 
 def update_inventory():
