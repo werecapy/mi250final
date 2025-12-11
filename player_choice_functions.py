@@ -6,35 +6,30 @@ from game_state import game_state, purchase_combo, purchase_meal
 
 paper_topic_list = ['sleep disorders', 'nuclear power',
                     "social media interaction", 'book bans']
-
+#print(paper_topic_list)
 def get_choice(options):
     print("Which do you choose?")
     for i, option in enumerate(options, 1):
-        #Numbers the amount of options and makes a list for player to choose, display only
         print(f"    {i}. {option}")
-    choice = input(f"Enter your choice (1-{len(options)}): ") #The actual choice players will make
+    choice = input(f"Enter your choice (1-{len(options)}): ")
 
     if choice.isdigit() and 1 <= int(choice) <= len(options):
         return int(choice)
     print(f"Please enter a number between 1 and {len(options)}")
 
 def paper_topic_choice():
-    """Players have the random chance of getting to pick their own paper topic."""
     if random.random() < 0.5:
-        #Player chooses their own topic
-        new_topic = input("What is your paper on?\n>")#The actual choice players will make
+        new_topic = input("What is your paper on?\n>")
         paper_topic_list.append(new_topic)
         game_state["paper_topic"] = new_topic
     else:
-        #Paper topic is assigned
         topic = random.choice(paper_topic_list)
         game_state["paper_topic"] = topic
         print(f"Oh, that's right! It was {topic}!")
 
 
 def player_combo():
-    """Player gets to choose combo from Union Sparty's"""
-    combo = None
+    combo = "none"
     combo_options = {
         "1": ("A Woody's burrito, energy drink, and a bag of chips", "woody_combo"),
         "one": ("A Woody's burrito, energy drink, and a bag of chips", "woody_combo"),
@@ -67,10 +62,8 @@ def player_combo():
                 combo_text, combo_id = combo_options[choice_combo]
                 print(f"You gather your items, and bring them up to the cashier.\n"
                       "They were super nice and it was a quick transaction.\n")
-
                 if combo_id:
                     purchase_combo(combo_id)
-
                 return
             else:
                 print("Sorry, I don't understand that. Try again.")
@@ -113,8 +106,6 @@ def river_restaurant():
                 print(f"There are so many great choices on this menu, it's hard to pick just one!\n"
                       f"You end up picking {meal_text}.\n")
                 purchase_meal(restaurant_id, meal_text)
-                game_state["meal_name"] = meal_text
-
                 return
         else:
             print("Sorry, I don't understand that. Try again.\n")
@@ -137,7 +128,7 @@ def sit_in_beal():
     game_state["sit_in_beal"] = True
 
     combo_type = game_state.get("combo_type")
-    #Logic for each of the different combos
+
     if combo_type == "woody_combo":
         print("Sitting in a secluded part of the garden, you feast on your delicious "
               "Woody's burrito...\n")
@@ -148,7 +139,7 @@ def sit_in_beal():
 
     time.sleep(2)
     print("You notice the tree next to you isn't really a tree at all!\n")
-    print("It's a mascot!\n")
+
 
     # Import here to avoid circular import
     from dialogues import player_tereesa_ch_1
@@ -186,19 +177,19 @@ def convention_activities():
     #get choice
     while True:
         choice = input("> ").lower()
-        if choice == ("1", "one") and not game_state.get("mascot_cafe_visit"):
+        if choice in ("1", "one") and not game_state.get("mascot_cafe_visit"):
             from locations import mascot_cafe
             mascot_cafe()
-        elif choice == ("2","two") and not game_state.get("eating_contest_visit"):
+        elif choice in ("2","two") and not game_state.get("eating_contest_visit"):
             from locations import eating_contest
             eating_contest()
-        elif choice == ("3","three") and not game_state.get("artist_alley_visit"):
+        elif choice in ("3","three") and not game_state.get("artist_alley_visit"):
             from locations import artist_alley
             artist_alley()
-        elif choice == ("4","four") and not game_state.get("mascot_panel_visit"):
+        elif choice in ("4","four") and not game_state.get("mascot_panel_visit"):
             from locations import mascot_panels
             mascot_panels()
-        elif choice == ("5","five") and not game_state.get("mascot_cafe_visit"):
+        elif choice in ("5","five") and not game_state.get("mascot_cafe_visit"):
             from locations import mascot_cafe
             mascot_cafe()
         else:

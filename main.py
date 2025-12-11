@@ -44,7 +44,7 @@ def intro():
         "It's a wonderful, sunny day and you have decided to take a walk around campus before going to the library to study.\n"
         "The 1 bus is strangely full...\n"
         "You get off the bus at Abbot and GR...\n")
-
+    #player choice
     while True:
         choice = input("Do you want to go to the Union?\nType 'yes' or 'no'.\n> ").lower()
         if choice in ("yes", "y"):
@@ -94,9 +94,11 @@ def greet():
 
     print(f"So your name is {user_name}, your gender is {user_input_gender_save}, and you are {user_age} years old.")
     input("Press enter to continue...")
+    save(user_name, user_input_gender_save, user_gender, user_age)
+    set_player_data(user_name, user_input_gender_save, user_gender, user_age)
     intro()
 
-    return user_name, user_input_gender_save, user_gender, user_age
+
 
 
 def save(user_name, user_input_gender_save, user_gender, user_age):
@@ -121,16 +123,15 @@ def thanks():
     return
 
 
-greet()
-thanks()
+
+
 if __name__ == "__main__":
 
 
-    user_name, user_input_gender_save, user_gender, user_age = greet()
-    save(user_name, user_input_gender_save, user_gender, user_age)
 
-    # Store player data in shared state
-    set_player_data(user_name, user_input_gender_save, user_gender, user_age)
+
+    greet()
+    thanks()
 
 
 
