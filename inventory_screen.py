@@ -35,9 +35,11 @@ def window_title():
 
 def combo_pic():
     #handles combo in inventory
-    combo_turtle.hideturtle()
-    combo_turtle.teleport(-248.0, 134.0)
-    combo_turtle.shape()
+    if game_state["combo_purchase"]:
+        combo_turtle.penup()
+        combo_turtle.goto(-248.0, 134.0)
+        combo_turtle.shape('combo.gif')
+        combo_turtle.showturtle()
 
 def meal_pic():
     #handles meal picture in inventory
@@ -69,6 +71,12 @@ def sticker_vis():
          pass
 
 
+def update_inventory():
+    """Updates all items in inventory"""
+    window_title()
+    combo_pic()
+    meal_pic()
+    sticker_vis()
 
 
 

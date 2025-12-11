@@ -85,6 +85,9 @@ def player_tereesa_ch_1():
     """Called from sit_in_beal()"""
     tereesa_start.display()
 
+def player_grizzy_ch_1():
+    """Called from artist_alley"""
+    grizzy_start.display()
 # ============ SPARTY DIALOGUE TREE ============
 
 sparty_response_to_paper = dialogue_node(
@@ -368,3 +371,26 @@ tereesa_start = dialogue_node(
     }
 )
 
+# ============ GRIZZY DIALOGUE TREE ============
+
+curtains= dialogue_node(
+    "There's nothing interesting back there!",
+    {
+        ("1", "one"): ("'Oh, well... ok. What's your name again?"),
+        ("2", "two"): ("'Something about you telling me not to go back there is making me *want* to go back there.' He seems really dead set on you *not* going behind the curtain.")
+    }
+)
+
+weird_guy=dialogue_node(
+    "Hey! Didn't anyone ever tell you not to ask that at a mascot convention? It looks like your first time, so I'll let it slide...'",
+    {
+        ("1", "one"): ("")
+    }
+)
+grizzy_start = dialogue_node(
+    "Woah there, partner! Where do you think you're headed? The rest of the convention is over here!\n",
+    {
+        ("1", "one"): ("'I was going to check out the curtained area.'",curtains),
+        ("2", "two"):("This mascot is pretty weird. 'What are you supposed to be?'",weird_guy),
+    }
+)

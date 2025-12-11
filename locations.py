@@ -188,6 +188,7 @@ def artist_alley():
         sticker_booth()
     else:
         print("You continue browsing the art.\n")
+    print("You see a curtained off area. Upon trying to go investigate, a mascot comes up to you.\n")
 
 
 def mascot_panels():

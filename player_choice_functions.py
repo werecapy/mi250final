@@ -67,8 +67,12 @@ def player_combo():
                 combo_text, combo_id = combo_options[choice_combo]
                 print(f"You gather your items, and bring them up to the cashier.\n"
                       "They were super nice and it was a quick transaction.\n")
+                #update inventory
+                from inventory_screen import update_inventory
+                update_inventory()
                 if combo_id:
                     purchase_combo(combo_id)
+
                 return
             else:
                 print("Sorry, I don't understand that. Try again.")
@@ -112,6 +116,8 @@ def river_restaurant():
                       f"You end up picking {meal_text}.\n")
                 purchase_meal(restaurant_id, meal_text)
                 game_state["meal_name"] = meal_text
+                from inventory_screen import update_inventory
+                update_inventory()
                 return
         else:
             print("Sorry, I don't understand that. Try again.\n")
@@ -153,8 +159,12 @@ def sit_in_beal():
 
 def pick_sticker():
     sticker_options = ["s1", "s2", "s3"]
+
     chosen_sticker = random.choice(sticker_options)
     game_state["sticker"] = chosen_sticker
+    #update inventory
+    from inventory_screen import update_inventory
+    update_inventory()
     if game_state["sticker"] == "s3":
         print("Woah! you got a cool sticker...\n")
     else:
