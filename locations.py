@@ -72,6 +72,7 @@ def library():
     game_state["meet_sparty"] = True #Saves whether player has met Sparty or not
     print("Walking through the green space, you finally get to the front of the library. "
           "An interesting flyer catches your attention on the way to your usual study spot.\n")
+    poster_pic()
 
 
     input("Press enter to continue...\n")

@@ -1,18 +1,19 @@
 import turtle
 from game_state import *
 
-
+global combo_turtle,title,screen
 # Functions
 def init_turtle():
     """starts winds"""
-    global screen, title, combo_turtle
+    screen = turtle.Screen()
+
 
     if screen is not None:
         return  # Already initialized
 
     # inventory screen set up
 
-    screen = turtle.Screen()
+
     screen.bgcolor("white")
     screen.setup(600, 400)
     screen.title("Mascot Dating Simulator")
@@ -82,6 +83,9 @@ def pamphlet_vis():
 
 def sticker_vis():
     sticker_turt=turtle.Turtle()
+
+    sticker_turt.teleport(66.0, 111.0)
+    sticker_turt.pendown()
     if game_state["sticker"] == "s1":
         sticker_turt.shape("sticker1.gif")
     elif game_state["sticker"] == "s2":

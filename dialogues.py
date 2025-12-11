@@ -77,6 +77,16 @@ def different_activity():
     from player_choice_functions import convention_activities
     convention_activities()
 
+def close_cafe():
+    print("'We're actually closing up. Sorry. The people already seated are the last to be served.' The buff mascot says. You look down at his name take and it says 'Brutus.'\n"
+          "'Oh, I'm sorry, well thanks anyway!' you say.")
+    different_activity()
+def blurt_func():
+    print(f"'The mascot convention? Sparty, I'd love to, but I have to write a paper on {game_state['paper_topic']}.'")
+
+def reject():
+    print("You take the pamphlet and walk off.")
+    go_back_to_library()
 # ============ WRAPPER FUNCTIONS ============
 #These functions belong here, but are imported to other places
 def player_sparty_ch_1():
@@ -101,7 +111,7 @@ def player_gritty_ch_1():
 # ============ SPARTY DIALOGUE TREE ============
 
 sparty_response_to_paper = dialogue_node(
-    "He stomps and puts his hands on his hips, saying, 'Come onnnnn!'\n",
+    "He stomps and puts his hands on his hips, saying, '--!'\n",
     {
         ("1", "one"): (
             "'I know, I know, but it's 20% of my grade! If I don't do it, I'm screwed!'",
@@ -119,7 +129,7 @@ sparty_response_to_paper = dialogue_node(
 )
 
 sparty_response_to_excitement = dialogue_node(
-    "He gives you an aggressive thumbs up, '-.'",
+    "He gives you an aggressive thumbs up, '--.'",
     {
         ("1", "one"): (
             "'I know, I'll get my paper done later.'",
@@ -135,15 +145,15 @@ sparty_response_to_excitement = dialogue_node(
 blurt_2 = dialogue_node(
     "'Oh my gosh, I don't know why I did that. What you trying to tell me?' You say.",
     {
-        ("1", "continue"): ("Press enter to continue...", None)
+        ("1", "one"): ("You let go of his arm instantly and run off.", write_paper)
     }
 )
 
 blurt = dialogue_node(
-    "'--'",
+    "'--' he doesn't actually say anything, but you can still understand him for some reason...",
     {
         ("1", "one"): (
-            f"The mascot convention? Sparty, I'd love to, but I have to write a paper on {game_state['paper_topic']}.",
+            blurt_func,
             sparty_response_to_paper
         )
     }
@@ -251,9 +261,9 @@ otto_start = dialogue_node(
 brutus_start = dialogue_node(
     "'Hi, I'm Brutus. I'll be taking care of you today. What can I get you?'\n",
     {
-        ("1", "one"): ("'Can I get a water?'", None),
-        ("2", "two"): ("'I'd like a pop, please.'", None),
-        ("3", "three"): ("'.'", None),
+        ("1", "one"): ("'Can I get a water?'", close_cafe),
+        ("2", "two"): ("'I'd like a pop, please.'", close_cafe),
+        ("3", "three"): ("'Do you have any special drinks?.'", close_cafe),
     }
 )
 
@@ -261,9 +271,10 @@ brutus_start = dialogue_node(
 # ============ TEREESA (GARDEN MASCOT) DIALOGUE TREE ============
 
 pamphlet = dialogue_node(
-    "not finished, should show player pamphlet and let the player react to it.",
+    "'Yup! You should totally go!' she says.",
     {
-        ("1", "one"): ("pass", pamph)
+        ("1", "one"): ("'I'll think about it...' you say", pamph),
+        ('2','two'):("'What? No, I'm not doing this.'",go_back_to_library)
     }
 )
 
@@ -272,7 +283,7 @@ redirect = dialogue_node(
     {
         ("1", "one"): (
             "You're not thrilled someone is giving you a piece of paper. 'Thanks,' you say, taking the paper.",
-            None
+            reject
         ),
         ("2", "two"): (
             "You take the paper, looking it over. It's for a mascot convention?",
@@ -286,11 +297,11 @@ prune_yourself = dialogue_node(
     {
         ("1", "one"): (
             "'Yeah, I guess it can. Anyway, was there a reason you were hiding?'",
-            None
+            redirect
         ),
         ("2", "two"): (
             "'Let's not get too deep into that, I need to go to the library.'",
-            None
+            go_back_to_library
         ),
         ("3", "three"): (
             "You both stare at each other for a minute before Tereesa breaks the silence.",
@@ -304,7 +315,7 @@ shuffling = dialogue_node(
     {
         ("1", "one"): (
             "'I think if you pruned branches, then you would look even more out of place.'",
-            None
+            redirect
         ),
         ("2", "two"): (
             "'You look amazing just the way you are, don't prune yourself to fit in.'",
@@ -319,27 +330,30 @@ watched = dialogue_node(
         ("1", "one"): (
             "'No, not really. Is there any reason you're trying to hide out in public?'",
             pamphlet
-        ),
-        ("2", "two"): (
-            "'INSERT'",
-            None
         )
+
     }
 )
-
+offense = dialogue_node(
+    "'I am too!' she says, even though she is clearly not...",
+    {
+        ("1", "one"): ("'Well, did you need something?' you ask.",redirect),
+        ('2','two'):("'Whatever you say...' you reply. You get off the bench and walk away.", go_back_to_library)
+    }
+)
 gave_away = dialogue_node(
     "What gave me away?\n",
     {
         ("1", "one"): (
             "'You're not tall enough to be a real tree.' The mascot doesn't look anything like the other trees around.",
-            None
+            offense
         ),
         ("2", "two"): (
             "'I could hear you shuffling.'",
             shuffling
         ),
         ("3", "three"): (
-            "I felt like I was being watched.",
+            "'I felt like I was being watched.'",
             watched
         )
     }
@@ -350,15 +364,15 @@ blew_cover = dialogue_node(
     {
         ("1", "one"): (
             "'It's okay, you tried your best.'",
-            None
+            redirect
         ),
         ("2", "two"): (
-            "'You were trying to be covert?'",
-            None
+            "'You were trying to be covert?' She shrugs and you walk away.",
+            go_back_to_library
         ),
         ("3", "three"): (
             "What are you doing?",
-            None
+            redirect
         )
     }
 )

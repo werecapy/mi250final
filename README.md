@@ -1,37 +1,29 @@
 [# MI250final
-
-
-
-## Getting started
-
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
+# Mascot Dating Simulator
 
 ## Description
-This is my MI 250 final project. It thought it would be fun to create a mascot dating simulator. Choose to interact with a few of the weird mascots selected for the project and fulfill your dream of going on a first date with a mascot!
+This is my MI 250 final project. It thought it would be fun to create a mascot dating simulator. Choose to interact with a few of the weird mascots selected for the project and fulfill your dream of speed dating a mascot!
 
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## To run
+To run the story part of the simulator, play main.py. For inventory, play inventory_screen. For poster_screen, play poster_screen.py.
+
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+There should be no external libraries needed to run this game
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
+## Code overview
+    -Main.py is responsible for starting, running, saving player info, and quitting.
+    -game_state.py is responsible for the different checkpoints in the game. It is a dictionary of checkpoints and has functions to handle the assignment of variables at the different checkpoints.
+    -locations.py is responsible for handling the narration, for all the different locations. If a location has a choice to make, it will go to player functions.
+    -player_choice_functions is responsible for handling the player choices. Most if not all the choices a player makes will be housed here and imported into another file.
+    -dialogue.py is responsible for exclusively handling the logic for dialogue_node class. The class is exported into dialogues and dating show for use. Initally, this looked like one huge file with a bunch of loops like in the CYA in the beginning of the semester, but I was able to get AI to refine it to a class.
+    -dialogues.py is responsible for handling the dialogue itself for most of the game.
+    -dating_show.py is responsible for handling the rest of the dialouge because dialogues was getting too long.
+    -validation.py validates the whole game to make sure it will all run before the player starts. This is entirely generated, however it did save a lot of time play testing.
+    -inventory_screen.py is responsible for handling the visual part of the game. It is a visual inventory
+    -poster_screen.py is supposed to show the player a poster.
 ## Support
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 

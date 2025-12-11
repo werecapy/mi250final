@@ -18,7 +18,11 @@ def emcee_name_line():
     #seperate because of the called game_state
     return f"'It's uh, um, {game_state['player_name']}'"
 def emcee_line2():
-    return f"'{game_state['player_name']}, a wonderful name! So here's how this is going to work: you'll get to talk to five mascots today and possibly go home with some phone numbers. Are you ready?'"
+    return f"'{game_state['player_name']}, a wonderful name! So here's how this is going to work: you'll get to talk to three mascots today and possibly go home with some phone numbers. We asked them 5 questions and they've prepared some pretty interesting responses. Are you ready?'"
+
+
+
+
 
 #---------------EMCEE----------
 

@@ -1,17 +1,17 @@
 
 
-#from validation import run_all_validations, print_validation_results
+from validation import run_all_validations, print_validation_results
 
 
 
 
 
 # Run silent validation first
-#print("Initializing game...", end=" ", flush=True)
-#validation_errors = run_all_validations(verbose=False)
+print("Initializing game...", end=" ", flush=True)
+validation_errors = run_all_validations(verbose=False)
 
-#if not print_validation_results(validation_errors):
-    #exit(1)
+if not print_validation_results(validation_errors):
+    exit(1)
 
 # Only continue if validation passed
 # main.py CAN import from other modules
